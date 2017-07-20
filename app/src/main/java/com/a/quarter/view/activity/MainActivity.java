@@ -25,7 +25,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     protected void initData() {
 
     }
-             
+
     @Override
     protected void initView() {
         myTitanicTextView = (TitanicTextView) findViewById(R.id.my_text_view);
