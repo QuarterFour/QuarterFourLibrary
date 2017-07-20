@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.a.quarter.R;
-import com.a.quarter.system.MyAppliction;
 
 
 /**
@@ -35,12 +34,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     private void init() {
 
 
-        MyAppliction.getInstance().addActivity(this);
+
         createPresenter();//建立presenter
         if (mPresenter != null) {
             mPresenter.setBaseview(this);
         }
-        MyAppliction.getInstance().addActivity(this);//添加当前Activity
+       // MyAppliction.getInstance().addActivity(this);//添加当前Activity
     }
 
 
@@ -80,7 +79,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             mPresenter = null;
         }
 
-        MyAppliction.getInstance().delActivity(this);
+       // MyAppliction.getInstance().delActivity(this);
         super.onDestroy();
     }
 
