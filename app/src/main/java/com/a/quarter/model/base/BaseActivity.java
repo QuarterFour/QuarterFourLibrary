@@ -35,7 +35,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     private void init() {
 
 
-        MyAppliction.getInstance().addActivity(this);
+
         createPresenter();//建立presenter
         if (mPresenter != null) {
             mPresenter.setBaseview(this);

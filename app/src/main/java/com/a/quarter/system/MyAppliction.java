@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 public class MyAppliction extends Application {
 
-    private static MyAppliction instance;
-    private ArrayList<Activity> activities;
+    private static MyAppliction instance=new MyAppliction();
+    private ArrayList<Activity> activities=new ArrayList<>();
     private static Context mContext;
     @Override
     public void onCreate() {
@@ -26,6 +26,7 @@ public class MyAppliction extends Application {
         mContext=this;
     }
     public static synchronized MyAppliction getInstance() {
+
         return instance;
     }
 
