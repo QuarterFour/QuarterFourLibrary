@@ -3,23 +3,21 @@
     <group android:checkableBehavior="single" />
     <item
         android:id="@+id/nac_call"
-        android:icon="@drawable/ic_goods_kefu"
-        android:title="Call" />
+        android:icon="@drawable/new_love_tabbar"
+        android:title="我的关注" />
     <item
         android:id="@+id/nac_friends"
-        android:icon="@drawable/ic_goods_kefu"
-        android:title="Friends" />
+        android:icon="@drawable/ugc_icon_attention"
+        android:title="我的收藏" />
     <item
         android:id="@+id/nac_location"
-        android:icon="@drawable/ic_goods_kefu"
-        android:title="Location" />
+        android:icon="@drawable/ic_subscibe_search_normal"
+        android:title="搜索好友" />
     <item
         android:id="@+id/nac_mail"
         android:icon="@drawable/ic_goods_kefu"
-        android:title="Mail" />
-    <item
-        android:id="@+id/nac_task"
-        android:icon="@drawable/ic_goods_kefu"
-        android:title="Task" />
+        android:title="消息通知" />
+
+
 
 </menu>

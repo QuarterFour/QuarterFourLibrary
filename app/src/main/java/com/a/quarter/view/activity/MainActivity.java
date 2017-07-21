@@ -69,6 +69,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         too = (Toolbar) findViewById(R.id.toolbar);
         //替代ActionBar
         setSupportActionBar(too);
+
         main_radioButton_recommend = (RadioButton) findViewById(R.id.main_radioButton_recommend);
         main_radioButton_episode = (RadioButton) findViewById(R.id.main_radioButton_episode);
         main_radioButton_video = (RadioButton) findViewById(R.id.main_radioButton_video);
@@ -77,7 +78,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
         main_radioGroup.setOnCheckedChangeListener(this);
         anv_view.setCheckedItem(R.id.nac_call);//call为默认选中
-//
+//   // TODO: 2017/7/21 将导航按钮控制者侧划还没实现
 //        ActionBar actionBar = getActionBar();
 //        if (actionBar!=null) {
 //            actionBar.setDisplayHomeAsUpEnabled(true);
