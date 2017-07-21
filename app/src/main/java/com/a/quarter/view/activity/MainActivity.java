@@ -1,6 +1,7 @@
 package com.a.quarter.view.activity;
 
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -40,17 +42,21 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     private RadioButton main_radioButton_recommend;
     private RadioButton main_radioButton_episode;
     private RadioButton main_radioButton_video;
-    private Toolbar too;
+    private Toolbar mToolBar;
     private NavigationView anv_view;
     private DrawerLayout drawer_layout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
+        mToolBar = (Toolbar) findViewById(R.id.mToolBar);
+        mToolBar.setTitle("AM");
+        setSupportActionBar(mToolBar);
+        mToolBar.setNavigationIcon(R.drawable.ugc_icon_attention);
+        mToolBar.setSubtitle("推荐");
+        deleteFragnebt();
     }
-
+//设置默认的fragment
     private void deleteFragnebt() {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_framelayout, new RecommendFragment()).commit();
     }
@@ -64,12 +70,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     @Override
     protected void initView() {
-        deleteFragnebt();
-        //重要的两段代码
-        too = (Toolbar) findViewById(R.id.toolbar);
-        //替代ActionBar
-        setSupportActionBar(too);
-
         main_radioButton_recommend = (RadioButton) findViewById(R.id.main_radioButton_recommend);
         main_radioButton_episode = (RadioButton) findViewById(R.id.main_radioButton_episode);
         main_radioButton_video = (RadioButton) findViewById(R.id.main_radioButton_video);
@@ -78,32 +78,31 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
         main_radioGroup.setOnCheckedChangeListener(this);
         anv_view.setCheckedItem(R.id.nac_call);//call为默认选中
-//   // TODO: 2017/7/21 将导航按钮控制者侧划还没实现
-//        ActionBar actionBar = getActionBar();
-//        if (actionBar!=null) {
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//            actionBar.setHomeAsUpIndicator(R.drawable.ic_goods_kefu);
-//        }
+  // TODO: 2017/7/21 将导航按钮控制者侧划还没实现
+        ActionBar actionBar = getActionBar();
+        if (actionBar!=null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
 
+        }
+   //侧划列表条目的点击事件
         anv_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-              //  drawer_layout.closeDrawers();//关闭的方法
 
                 return true;
             }
         });
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case  android.R.id.home:
-//                drawer_layout.openDrawer(GravityCompat.START);
-//                break;
-//        }
-//        return true;
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case  android.R.id.home:
+                drawer_layout.openDrawer(GravityCompat.START);
+                break;
+        }
+        return true;
+    }
 
     @Override
     protected int getLayoutId() {
