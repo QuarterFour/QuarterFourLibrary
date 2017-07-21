@@ -6,7 +6,6 @@ import android.content.Context;
 import com.a.quarter.R;
 import com.a.quarter.model.base.BaseActivity;
 import com.a.quarter.model.bean.LoginBean;
-import com.a.quarter.model.utils.LoadingDialogUtils;
 import com.a.quarter.presenter.MainPresenter;
 import com.a.quarter.ui.LoadingDialog;
 import com.a.quarter.ui.Titanic;
@@ -28,11 +27,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     @Override
     protected void initView() {
-        myTitanicTextView = (TitanicTextView) findViewById(R.id.my_text_view);
-        titanic = new Titanic();
-        titanic.start(myTitanicTextView);
 
-        LoadingDialogUtils.showDialog(MainActivity.this);
 
 
 

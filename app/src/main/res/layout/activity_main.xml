@@ -21,6 +21,7 @@
         >
 
         <RadioButton
+            android:drawableTop="@drawable/ic_normal_class"
             android:textColor="@drawable/textcolor"
             android:padding="10dp"
             android:textSize="20dp"
@@ -33,19 +34,19 @@
             android:id="@+id/rb2"
             />
         <RadioButton
-            android:drawableTop=""
+            android:drawableTop="@drawable/ic_goods_kefu"
             android:textColor="@drawable/textcolor"
             android:padding="10dp"
             android:textSize="20dp"
             android:button="@null"
             android:gravity="center"
             android:text="段子"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            android:layout_width="133dp"
             android:layout_height="wrap_content"
             android:id="@+id/rb3"
             />
         <RadioButton
+            android:drawableTop="@drawable/ic_goods_store"
             android:textColor="@drawable/textcolor"
             android:padding="10dp"
             android:textSize="20dp"
