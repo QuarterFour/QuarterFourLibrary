@@ -12,6 +12,15 @@
       android:layout_centerVertical="true"
         android:src="@drawable/header" />
 
+    <ImageView
+
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/bianji"
+        android:layout_centerInParent="true"
+        />
+
     <TextView
         android:id="@+id/describe"
         android:layout_width="wrap_content"
