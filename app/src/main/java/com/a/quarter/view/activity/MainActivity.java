@@ -73,8 +73,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     private void deleteFragnebt() {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_framelayout, new RecommendFragment()).commit();
     }
-
-
     @Override
     protected void initData() {
 
