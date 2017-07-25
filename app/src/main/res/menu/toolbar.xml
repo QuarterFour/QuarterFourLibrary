@@ -3,11 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     xmlns:tools="http://schemas.android.com/tools"
     <item
-        android:id="@+id/delete"
-        android:icon="@mipmap/ic_launcher"
+        android:id="@+id/compile"
+        android:icon="@mipmap/bianji"
         android:title="delete"
-        app:showAsAction="never"></item>
-
-
-
+        app:showAsAction="always"></item>
 </menu>
