@@ -8,6 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
        ></android.support.design.widget.TabLayout>
+
+
+
     <FrameLayout
         android:id="@+id/recommendFragemt_framlayout"
         android:layout_width="match_parent"
