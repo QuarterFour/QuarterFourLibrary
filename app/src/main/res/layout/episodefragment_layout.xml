@@ -13,7 +13,6 @@
         android:layout_height="30dp"
         android:id="@+id/satin"
         android:text="段子"
-        android:background="@color/ash"
         />
 
 
