@@ -39,7 +39,7 @@ public class DetailsAttentionVideoActivity extends Activity {
             @Override
             public void onPrepared(IMediaPlayer iMediaPlayer) {
 
-            //    mVideoView.start();
+                mVideoView.start();
             }
         });
 
