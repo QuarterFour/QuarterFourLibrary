@@ -1,39 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            android:text="热门"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:id="@+id/Video_hotText"/>
-        <TextView
-            android:layout_width="0dp"
-            android:text="附近"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            android:id="@+id/Video_nearbyText"/>
-
-    </LinearLayout>
-
-
-<android.support.v7.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/Video_RecyclerView"></android.support.v7.widget.RecyclerView>
+    android:orientation="vertical">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/VideoFragment_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.design.widget.TabLayout>
+
+    <FrameLayout
+        android:id="@+id/VideoFragment_framlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        ></FrameLayout>
 
 
 </LinearLayout>

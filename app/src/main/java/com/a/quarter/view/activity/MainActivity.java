@@ -57,6 +57,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         initCreat();
         deleteFragnebt();
     }
@@ -128,7 +129,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
                     case R.id.nav_set:
                         Toast.makeText(MainActivity.this, "点击了 ：设置", Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.nav_niget:
+                    case R.id.nav_night:
                         Toast.makeText(MainActivity.this, "点击了 ：夜间", Toast.LENGTH_SHORT).show();
                         break;
                 }

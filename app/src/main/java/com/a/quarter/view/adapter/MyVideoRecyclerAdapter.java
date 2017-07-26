@@ -1,12 +1,29 @@
 package com.a.quarter.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.a.quarter.R;
+import com.a.quarter.model.media.AndroidMediaController;
+import com.a.quarter.model.media.IjkVideoView;
+import com.a.quarter.view.activity.DetailsVideoActivity;
+
+import java.util.HashMap;
+
+import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 /**
  * 作者: 陈春晖
@@ -17,9 +34,20 @@ import com.a.quarter.R;
 
 public class MyVideoRecyclerAdapter extends RecyclerView.Adapter<MyVideoRecyclerAdapter.MyViewHolder> {
     private Context context;
+    private OnItemClickLitener mOnItemClickLitener;
 
     public MyVideoRecyclerAdapter(Context context) {
             this.context = context;
+    }
+
+    public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener)
+    {
+        this.mOnItemClickLitener = mOnItemClickLitener;
+    }
+    public interface OnItemClickLitener
+    {
+        void onItemClick(View view, int position);
+        void onItemLongClick(View view , int position);
     }
 
     @Override
@@ -31,23 +59,99 @@ public class MyVideoRecyclerAdapter extends RecyclerView.Adapter<MyVideoRecycler
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+//             Uri uri= Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/123.mp4");
+//            holder.mVideoView.setVideoURI(uri);
+        holder.mNameTextView.setText("-----Name-----");
+        holder.mImageView.setImageResource(R.mipmap.ic_launcher);
+        //通过getVideoThumbnail方法取得视频中的第一帧图片，该图片是一个bitmap对象
+//        Bitmap bitmap=getVideoThumbnail("");
+//将bitmap对象转换成drawable对象
+//        Drawable drawable=new BitmapDrawable(bitmap);
+//将drawable对象设置给视频播放窗口surfaceView控件作为背景图片
+//        mVideoView.setBackgroundDrawable(drawable);
+//            holder.mVideoView.setBackgroundDrawable(drawable);
 
+        if (mOnItemClickLitener != null)
+        {
+            holder.itemView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    int pos = holder.getLayoutPosition();
+                    mOnItemClickLitener.onItemClick(holder.itemView, pos);
+
+                }
+            });
+
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener()
+            {
+                @Override
+                public boolean onLongClick(View v)
+                {
+                    int pos = holder.getLayoutPosition();
+                    mOnItemClickLitener.onItemLongClick(holder.itemView, pos);
+                    return false;
+                }
+            });
+        }
 
     }
-
-
 
     @Override
     public int getItemCount() {
 
-        return 0;
+        return 5;
     }
     class MyViewHolder extends RecyclerView.ViewHolder {
 
+//        private final IjkVideoView mVideoView;
+//        private final AndroidMediaController mMediaController;
+        private final TextView mNameTextView;
+        private final ImageView mImageView;
+
         public MyViewHolder(View itemView) {
             super(itemView);
+            mNameTextView = (TextView) itemView.findViewById(R.id.Video_NameTextView);
+            mImageView = (ImageView) itemView.findViewById(R.id.Video_MapImageView);
+//            IjkMediaPlayer.loadLibrariesOnce(null);
+//            IjkMediaPlayer.native_profileBegin("libijkplayer.so");
+//            mMediaController = new AndroidMediaController(context, false);
+            //mMediaController.setSupportActionBar(actionBar);
+//            mVideoView = (IjkVideoView) itemView.findViewById(R.id.Video_ijkPlay);
+//            mVideoView.setMediaController(mMediaController);
 
         }
     }
+//    public Bitmap getVideoThumbnail(String url) {
+//        Bitmap bitmap = null;
+////MediaMetadataRetriever 是android中定义好的一个类，提供了统一
+////的接口，用于从输入的媒体文件中取得帧和元数据；
+//        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+//        try {
+//            //（）根据文件路径获取缩略图
+////retriever.setDataSource(filePath);
+//            retriever.setDataSource(url, new HashMap());
+//            //获得第一帧图片
+//            bitmap = retriever.getFrameAtTime();
+//        }
+//        catch(IllegalArgumentException e) {
+//            e.printStackTrace();
+//        }
+//        catch (RuntimeException e) {
+//            e.printStackTrace();
+//        }
+//        finally {
+//            try {
+//                retriever.release();
+//            }
+//            catch (RuntimeException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        Log.v("bitmap", "bitmap="+bitmap);
+//        return bitmap;
+//    }
+
 }
