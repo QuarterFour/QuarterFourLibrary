@@ -19,6 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.LoginActivity_OtherActivity" />
+        <activity android:name=".view.activity.SignActivity"></activity>
         <activity android:name=".view.activity.DetailsAttentionVideoActivity"/>
         <activity android:name=".view.activity.DetailsHotVideoActivity"/>
     </application>

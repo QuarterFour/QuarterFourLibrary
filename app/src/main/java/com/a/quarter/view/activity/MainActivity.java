@@ -3,7 +3,7 @@ package com.a.quarter.view.activity;
 
 import android.app.ActionBar;
 import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -64,19 +64,15 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void initCreat() {
-        //---测试沉浸式----
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(option);
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
+
         //-----toolbar----
         mToolBar = (Toolbar) findViewById(R.id.mToolBar);
+        mToolBar.setTitle("");
         setSupportActionBar(mToolBar);
         mToolBar.setNavigationIcon(R.drawable.ugc_icon_attention);
         mToolBar.inflateMenu(R.menu.toolbar);
         mToolBar.setOnMenuItemClickListener(this);
+
     }
 
     //设置默认的fragment
@@ -97,13 +93,20 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
         main_radioGroup.setOnCheckedChangeListener(this);
         anv_view.setCheckedItem(R.id.nav_care);//call为默认选中
-        // TODO: 2017/7/21 将导航按钮控制者侧划还没实现
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-
         }
-
+        //获得头像所在布局 与控件的点击事件（目前只有点击头像的，想找一个更简单的方法）
+        View headerView = anv_view.getHeaderView(0);
+        headerView.findViewById(R.id.icon_image).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+               // Toast.makeText(MainActivity.this, "你是要登陆吗？", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //侧划列表条目的点击事件
         anv_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -112,7 +115,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
                 switch (item.getItemId()) {
 
                     case R.id.nav_care:
+
                         Toast.makeText(MainActivity.this, "点击了 ：我的关注", Toast.LENGTH_SHORT).show();
+
                         break;
                     case R.id.nav_collect:
                         Toast.makeText(MainActivity.this, "点击了 ：我的收藏", Toast.LENGTH_SHORT).show();
@@ -137,6 +142,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
             }
         });
     }
+
 
     //点击选项菜单弹出侧滑
     @Override
@@ -189,7 +195,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
                 break;
         }
     }
-
     //toolbar的子菜单的点击事件
     @Override
     public boolean onMenuItemClick(MenuItem item) {
@@ -203,8 +208,22 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //加载 res/menu/toolbar.xml 文件
-
         getMenuInflater().inflate(R.menu.toolbar, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus && Build.VERSION.SDK_INT >= 19) {
+            View decorView = getWindow().getDecorView();
+            decorView.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
     }
 }
