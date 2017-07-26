@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.a.quarter.view.activity.LoginActivity"
+    android:background="@drawable/bizhi"
+    >
+    <include
+        layout="@layout/mytoolbar"/>
+
+<Button
+    android:layout_marginTop="3dp"
+    android:id="@+id/main_qqlogin"
+    android:background="@drawable/myshop"
+    android:layout_marginBottom="100dp"
+    android:layout_alignParentBottom="true"
+    android:textColor="#FAFAFA"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="50dp"
+    android:layout_marginLeft="50dp"
+    android:drawableLeft="@drawable/qq"
+    android:text="QQ登陆"
+    />
+    <Button
+
+      android:drawableLeft="@drawable/weixin"
+        android:text="微信登陆"
+        android:background="@drawable/myshop2"
+        android:textColor="#FAFAFA"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/main_qqlogin"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+       />
+
+    <LinearLayout
+        android:layout_marginBottom="20dp"
+        android:layout_alignBottom="@+id/main_qqlogin"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/other"
+            android:textColor="#B6B9EF"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="其他登陆方式>>"
+            />
+
+    </LinearLayout>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/loginActivity_framlayout"
+    ></FrameLayout>
+
+
+</RelativeLayout>
