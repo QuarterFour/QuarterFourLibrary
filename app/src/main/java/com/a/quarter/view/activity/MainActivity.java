@@ -3,6 +3,7 @@ package com.a.quarter.view.activity;
 
 import android.app.ActionBar;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -128,7 +129,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
                     case R.id.nav_set:
                         Toast.makeText(MainActivity.this, "点击了 ：设置", Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.nav_niget:
+                    case R.id.nav_night:
                         Toast.makeText(MainActivity.this, "点击了 ：夜间", Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -194,7 +195,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.compile:
-                Toast.makeText(this, "点我干嘛！", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this,EditActivity.class);
+                startActivity(intent);
+
                 break;
         }
         return true;

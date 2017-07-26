@@ -33,8 +33,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     }
     private void init() {
 
-
-
         createPresenter();//建立presenter
         if (mPresenter != null) {
             mPresenter.setBaseview(this);
@@ -44,11 +42,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
 
 
-    protected abstract void initData();
+    protected abstract int getLayoutId();
 
     protected abstract void initView();
 
-    protected abstract int getLayoutId();
+    protected abstract void initData();
     protected abstract void createPresenter();
 
 
