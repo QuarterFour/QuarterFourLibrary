@@ -16,7 +16,7 @@ import retrofit2.http.Query;
 
 public interface Api {
 
-
+     
     @GET()
     Observable<BaseBean<LoginBean>> Login(@Query("username") String username);
 
