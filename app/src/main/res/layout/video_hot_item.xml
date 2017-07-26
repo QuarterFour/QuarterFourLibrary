@@ -13,12 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:id="@+id/Video_NameTextView"/>
+        android:id="@+id/Hot_NameTextView"/>
     <ImageView
         android:layout_width="100dp"
         android:src="@mipmap/ic_launcher"
         android:layout_height="100dp"
-        android:id="@+id/Video_MapImageView"/>
+        android:id="@+id/Hot_MapImageView"/>
     <!--<com.a.quarter.model.media.IjkVideoView-->
         <!--android:layout_width="150dp"-->
         <!--android:layout_height="150dp"-->

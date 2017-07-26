@@ -1,8 +1,6 @@
 package com.a.quarter.view.fragment;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,13 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.a.quarter.R;
-import com.a.quarter.view.activity.DetailsVideoActivity;
-import com.a.quarter.view.adapter.MyVideoRecyclerAdapter;
-
-import java.util.HashMap;
+import com.a.quarter.view.activity.DetailsHotVideoActivity;
+import com.a.quarter.view.adapter.MyVideoHotAdapter;
 
 /**
  * 作者: 陈春晖
@@ -30,7 +25,7 @@ import java.util.HashMap;
 public class VideoFragment_Hot extends Fragment {
 
     private RecyclerView video_recyclerView;
-    private MyVideoRecyclerAdapter adapter;
+    private MyVideoHotAdapter adapter;
 
     @Nullable
     @Override
@@ -46,16 +41,16 @@ public class VideoFragment_Hot extends Fragment {
     }
 
     private void initView() {
-        video_recyclerView = (RecyclerView) getActivity().findViewById(R.id.Video_RecyclerView);
+        video_recyclerView = (RecyclerView) getActivity().findViewById(R.id.VideoHot_RecyclerView);
         video_recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,
                 StaggeredGridLayoutManager.VERTICAL));
-        adapter = new MyVideoRecyclerAdapter(getActivity());
+        adapter = new MyVideoHotAdapter(getActivity());
         video_recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickLitener(new MyVideoRecyclerAdapter.OnItemClickLitener() {
+        adapter.setOnItemClickLitener(new MyVideoHotAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
                 Log.e("This", "onItemClick: "+position );
-                Intent intent = new Intent(getActivity(), DetailsVideoActivity.class);
+                Intent intent = new Intent(getActivity(), DetailsHotVideoActivity.class);
                 startActivity(intent);
             }
 

@@ -11,7 +11,7 @@
     <com.a.quarter.model.media.IjkVideoView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:id="@+id/Details_ijkPlay"></com.a.quarter.model.media.IjkVideoView>
+        android:id="@+id/DetailsHot_ijkPlay"></com.a.quarter.model.media.IjkVideoView>
 
     <TextView
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
         android:textSize="16sp"
         android:text="999999999999"
         android:padding="5dp"
-        android:id="@+id/Details_NameTextView"/>
+        android:id="@+id/DetailsHot_NameTextView"/>
 
     <TextView
         android:text="567次播放，今天19:22"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:padding="5dp"
-        android:id="@+id/Details_TimeTextView"/>
+        android:id="@+id/DetailsHot_TimeTextView"/>
 
     <RelativeLayout
         android:layout_marginTop="20dp"
@@ -38,13 +38,13 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_marginTop="20dp"
-            android:id="@+id/Details_Image"
+            android:id="@+id/DetailsHot_Image"
             android:layout_centerHorizontal="true"
             android:src="@mipmap/ic_launcher"
             android:layout_height="100dp" />
 
         <TextView
-            android:layout_below="@+id/Details_Image"
+            android:layout_below="@+id/DetailsHot_Image"
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"

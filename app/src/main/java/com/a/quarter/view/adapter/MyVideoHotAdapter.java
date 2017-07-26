@@ -1,29 +1,13 @@
 package com.a.quarter.view.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.MediaMetadataRetriever;
-import android.net.Uri;
-import android.os.Environment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a.quarter.R;
-import com.a.quarter.model.media.AndroidMediaController;
-import com.a.quarter.model.media.IjkVideoView;
-import com.a.quarter.view.activity.DetailsVideoActivity;
-
-import java.util.HashMap;
-
-import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 /**
  * 作者: 陈春晖
@@ -32,11 +16,11 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
  * 实现思路:
  */
 
-public class MyVideoRecyclerAdapter extends RecyclerView.Adapter<MyVideoRecyclerAdapter.MyViewHolder> {
+public class MyVideoHotAdapter extends RecyclerView.Adapter<MyVideoHotAdapter.MyViewHolder> {
     private Context context;
     private OnItemClickLitener mOnItemClickLitener;
 
-    public MyVideoRecyclerAdapter(Context context) {
+    public MyVideoHotAdapter(Context context) {
             this.context = context;
     }
 
@@ -52,7 +36,7 @@ public class MyVideoRecyclerAdapter extends RecyclerView.Adapter<MyVideoRecycler
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(context, R.layout.video_recyclerview_item, null);
+        View view = View.inflate(context, R.layout.video_hot_item, null);
         MyViewHolder holder = new MyViewHolder(view);
 
         return holder;
@@ -62,7 +46,7 @@ public class MyVideoRecyclerAdapter extends RecyclerView.Adapter<MyVideoRecycler
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 //             Uri uri= Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/123.mp4");
 //            holder.mVideoView.setVideoURI(uri);
-        holder.mNameTextView.setText("-----Name-----");
+        holder.mNameTextView.setText("-----Hot-----");
         holder.mImageView.setImageResource(R.mipmap.ic_launcher);
         //通过getVideoThumbnail方法取得视频中的第一帧图片，该图片是一个bitmap对象
 //        Bitmap bitmap=getVideoThumbnail("");
@@ -113,8 +97,8 @@ public class MyVideoRecyclerAdapter extends RecyclerView.Adapter<MyVideoRecycler
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            mNameTextView = (TextView) itemView.findViewById(R.id.Video_NameTextView);
-            mImageView = (ImageView) itemView.findViewById(R.id.Video_MapImageView);
+            mNameTextView = (TextView) itemView.findViewById(R.id.Hot_NameTextView);
+            mImageView = (ImageView) itemView.findViewById(R.id.Hot_MapImageView);
 //            IjkMediaPlayer.loadLibrariesOnce(null);
 //            IjkMediaPlayer.native_profileBegin("libijkplayer.so");
 //            mMediaController = new AndroidMediaController(context, false);
