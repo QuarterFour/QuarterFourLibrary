@@ -24,29 +24,28 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-
 
     //gson解析
-    compile 'com.google.code.gson:gson:2.8.1'
     //retrofit + rxjava
+    //图片加载框架
+    //recycleview
+    //炫酷提示框
+    //图片圆化
+    //tablayout
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'io.reactivex.rxjava2:rxjava:2.1.1'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-    //图片加载框架
     compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
-    //recycleview
     compile 'com.android.support:recyclerview-v7:25.3.1'
-    //炫酷提示框
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
-    compile 'com.android.support:design:25.3.1'
-    //图片圆化
     compile 'de.hdodenhof:circleimageview:2.1.0'
-    //tablayout
-    compile 'com.android.support:design:25.3.1'
+    testCompile 'junit:junit:4.12'
 }
