@@ -43,7 +43,7 @@ dependencies {
     //炫酷提示框
     //图片圆化
     //tablayout
-    compile 'com.android.support:design:25.3.1'
+
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
