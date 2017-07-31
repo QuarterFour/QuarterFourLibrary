@@ -41,11 +41,13 @@ public class RecommendFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        defaultFragment();
         mTabLayout = (TabLayout) getView().findViewById(R.id.recommendFragemt_tab_layout);
         myAdapterForRecommendFragment = new MyAdapterForRecommendFragment(getActivity().getSupportFragmentManager());
         //设置tablayout标签getFragmentManager()
         mTabLayout.addTab(mTabLayout.newTab().setText("热门"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("关注"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("收藏"));
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
 
 
@@ -67,5 +69,10 @@ public class RecommendFragment extends Fragment {
 
             }
         });
+    }
+
+    private void defaultFragment() {
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.recommendFragemt_framlayout,new RecommendFragment_HotFragment()).commit();
+
     }
 }

@@ -9,10 +9,10 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-//         ndk {
-//            abiFilters "armeabi-v7a"  // 指定要ndk需要兼容的架构(这样其他依赖包里mips,x86,armeabi,arm-v8之类的so会被过滤掉)
-//        }
+        multiDexEnabled true
+
     }
     buildTypes {
         release {
@@ -25,16 +25,13 @@ android {
             jniLibs.srcDirs = ['libs']  /**在libs文件夹下找so文件*/
         }
     }
-
     repositories {
         mavenCentral()
         flatDir {
             dirs 'libs' /**在libs文件夹下找aar文件*/
         }
     }
-
 }
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -74,4 +71,7 @@ dependencies {
 
 
     testCompile 'junit:junit:4.12'
+    compile 'com.youth.banner:banner:1.4.9'  //最新版本
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.jwenfeng.pulltorefresh:library:1.2.5'
 }

@@ -25,7 +25,6 @@
     android:text="QQ登陆"
     />
     <Button
-
       android:drawableLeft="@drawable/weixin"
         android:text="微信登陆"
         android:background="@drawable/myshop2"
@@ -59,7 +58,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/loginActivity_framlayout"
-    ></FrameLayout>
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"></FrameLayout>
 
 
 </RelativeLayout>

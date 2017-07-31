@@ -51,6 +51,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     private NavigationView anv_view;
     private DrawerLayout drawer_layout;
     private ActionMenuView mHomeAmv;
+    private Intent intent;
 
     //初始化toolbar
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -79,6 +80,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     private void deleteFragnebt() {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_framelayout, new RecommendFragment()).commit();
     }
+
+
     @Override
     protected void initData() {
 
@@ -110,29 +113,43 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
         //侧划列表条目的点击事件
         anv_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
 
                     case R.id.nav_care:
-
-                        Toast.makeText(MainActivity.this, "点击了 ：我的关注", Toast.LENGTH_SHORT).show();
-
+                        //Toast.makeText(MainActivity.this, "点击了 ：我的关注", Toast.LENGTH_SHORT).show();
+                        intent=new Intent(MainActivity.this,AttentionActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.nav_collect:
-                        Toast.makeText(MainActivity.this, "点击了 ：我的收藏", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(MainActivity.this, "点击了 ：我的收藏", Toast.LENGTH_SHORT).show();
+                        intent=new Intent(MainActivity.this,MyCollectActivity.class);
+                        startActivity(intent);
+
                         break;
                     case R.id.nav_seek:
-                        Toast.makeText(MainActivity.this, "点击了 ：搜索好友", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(MainActivity.this, "点击了 ：搜索好友", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(MainActivity.this,FindFrandActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.nav_massage:
-                        Toast.makeText(MainActivity.this, "点击了 ：消息通知", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "点击了 ：消息通知", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(MainActivity.this,MessageActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.nav_myproduction:
-                        Toast.makeText(MainActivity.this, "点击了 ：我的收藏", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "点击了 ：我的作品", Toast.LENGTH_SHORT).show();
+                      intent=new Intent(MainActivity.this,MyworksActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.nav_set:
-                        Toast.makeText(MainActivity.this, "点击了 ：设置", Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(MainActivity.this, "点击了 ：设置", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(MainActivity.this,SetActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.nav_night:
                         Toast.makeText(MainActivity.this, "点击了 ：夜间", Toast.LENGTH_SHORT).show();
@@ -200,7 +217,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.compile:
-                Toast.makeText(this, "点我干嘛！", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, EditActivity.class);
+                startActivity(intent);
                 break;
         }
         return true;
