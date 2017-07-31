@@ -5,11 +5,13 @@ android {
     buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "com.a.quarter"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
     }
     buildTypes {
         release {
@@ -57,7 +59,7 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
     compile 'de.hdodenhof:circleimageview:2.1.0'
-    testCompile 'junit:junit:4.12'
+
     //tablayout
     compile 'com.android.support:design:25.3.1'
 
@@ -66,12 +68,13 @@ dependencies {
     compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.1'
 
 //    # Other ABIs: optional
-    compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.6.1'
-    compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.5.1'
-
+//    compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.6.1'
+//    compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.5.1'
+//
 //    # ExoPlayer as IMediaPlayer: optional, experimental
-    compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.6.1'
-    compile(name: 'ijkplayer-java-release', ext: 'aar')
+//    compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.6.1'
+//    compile(name: 'ijkplayer-java-release', ext: 'aar')
 
     testCompile 'junit:junit:4.12'
+    compile 'com.jwenfeng.pulltorefresh:library:1.2.5'
 }

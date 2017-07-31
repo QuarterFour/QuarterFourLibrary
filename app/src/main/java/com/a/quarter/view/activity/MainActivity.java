@@ -200,7 +200,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.compile:
-                Toast.makeText(this, "点我干嘛！", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, EditActivity.class);
+                startActivity(intent);
                 break;
         }
         return true;

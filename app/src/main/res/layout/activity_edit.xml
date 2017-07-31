@@ -38,7 +38,7 @@
         android:id="@+id/image1"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/qq"
+        android:src="@mipmap/shi"
         android:layout_gravity="center"
         android:layout_marginTop="80dp"
         />
@@ -47,7 +47,7 @@
         android:id="@+id/image2"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@mipmap/satin"
+        android:src="@mipmap/duan"
         android:layout_gravity="center"
         android:layout_marginTop="80dp"
         />
