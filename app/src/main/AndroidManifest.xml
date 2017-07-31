@@ -44,9 +44,6 @@
         <activity android:name=".view.activity.FindFrandActivity" />
         <activity android:name=".view.activity.MyCollectActivity" />
         <activity android:name=".view.activity.AttentionActivity" />
-        <activity android:name=".view.activity.SatinActivity" />
-        <activity android:name=".view.activity.DetailsAttentionVideoActivity" />
-        <activity android:name=".view.activity.DetailsHotVideoActivity" />
         <activity android:name=".view.activity.SuccessActivity"/>
     </application>
 

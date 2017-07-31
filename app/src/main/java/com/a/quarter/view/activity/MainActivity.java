@@ -132,10 +132,14 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
                         break;
                     case R.id.nav_seek:
-                        Toast.makeText(MainActivity.this, "点击了 ：搜索好友", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(MainActivity.this, "点击了 ：搜索好友", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(MainActivity.this,FindFrandActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.nav_massage:
-                        Toast.makeText(MainActivity.this, "点击了 ：消息通知", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "点击了 ：消息通知", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(MainActivity.this,MessageActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.nav_myproduction:
                         //Toast.makeText(MainActivity.this, "点击了 ：我的作品", Toast.LENGTH_SHORT).show();
