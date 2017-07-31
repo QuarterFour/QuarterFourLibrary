@@ -5,11 +5,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
-
 import com.a.quarter.R;
-import com.a.quarter.model.media.AndroidMediaController;
-import com.a.quarter.model.media.IjkVideoView;
-
+import media.AndroidMediaController;
+import media.IjkVideoView;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
@@ -57,10 +55,23 @@ public class DetailsAttentionVideoActivity extends Activity {
 
     }
 
-
     @Override
-    protected void onStop() {
-        super.onStop();
-        mVideoView.release(true);
+    public void onBackPressed() {
+        super.onBackPressed();
+        mBackPressed=true;
     }
+
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        if (mBackPressed || !mVideoView.isBackgroundPlayEnabled()) {
+//            mVideoView.stopPlayback();
+//            mVideoView.release(true);
+//            mVideoView.stopBackgroundPlay();
+//        } else {
+//            mVideoView.enterBackground();
+//        }
+//        IjkMediaPlayer.native_profileEnd();
+//
+//    }
 }

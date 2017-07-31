@@ -6,10 +6,13 @@ android {
     defaultConfig {
         applicationId "com.a.quarter"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//         ndk {
+//            abiFilters "armeabi-v7a"  // 指定要ndk需要兼容的架构(这样其他依赖包里mips,x86,armeabi,arm-v8之类的so会被过滤掉)
+//        }
     }
     buildTypes {
         release {
@@ -22,13 +25,16 @@ android {
             jniLibs.srcDirs = ['libs']  /**在libs文件夹下找so文件*/
         }
     }
+
     repositories {
         mavenCentral()
         flatDir {
             dirs 'libs' /**在libs文件夹下找aar文件*/
         }
     }
+
 }
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -63,15 +69,9 @@ dependencies {
 
     //    # required, enough for most devices.
     compile 'tv.danmaku.ijk.media:ijkplayer-java:0.6.1'
-    compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.1'
-
-//    # Other ABIs: optional
-    compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.6.1'
-    compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.5.1'
-
-//    # ExoPlayer as IMediaPlayer: optional, experimental
     compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.6.1'
     compile(name: 'ijkplayer-java-release', ext: 'aar')
+
 
     testCompile 'junit:junit:4.12'
 }

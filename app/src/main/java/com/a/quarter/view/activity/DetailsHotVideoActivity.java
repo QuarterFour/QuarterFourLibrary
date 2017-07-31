@@ -5,14 +5,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.a.quarter.R;
-import com.a.quarter.model.media.AndroidMediaController;
-import com.a.quarter.model.media.IjkVideoView;
-
+import media.AndroidMediaController;
+import media.IjkVideoView;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
-
+import com.a.quarter.R;
 
 /**
  * 作者: 陈春晖
@@ -24,7 +24,7 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 public class DetailsHotVideoActivity extends Activity{
 
     private IjkVideoView mVideoView;
-    private  AndroidMediaController mMediaController;
+    private AndroidMediaController mMediaController;
     private boolean mBackPressed;
 
     @Override
@@ -32,7 +32,16 @@ public class DetailsHotVideoActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.video_hot_details);
         initView();
+        initIjkPlay();
         initEvent();
+    }
+
+    private void initView() {
+        TextView backText= (TextView) findViewById(R.id.Detail_Back);
+        TextView likeText = (TextView) findViewById(R.id.Detail_like);
+        TextView unlikeText = (TextView) findViewById(R.id.Detail_unlike);
+        TextView downText = (TextView) findViewById(R.id.Detail_down);
+       LinearLayout writeLinear= (LinearLayout) findViewById(R.id.Detail_writeLinear);
     }
 
     private void initEvent() {
@@ -46,7 +55,7 @@ public class DetailsHotVideoActivity extends Activity{
 
     }
 
-    private void initView() {
+    private void initIjkPlay() {
         IjkMediaPlayer.loadLibrariesOnce(null);
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
         mMediaController = new AndroidMediaController(this, false);
@@ -64,19 +73,6 @@ public class DetailsHotVideoActivity extends Activity{
         super.onBackPressed();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        //点击返回或不允许后台播放时 释放资源
-//        if (mBackPressed || !mVideoView.isBackgroundPlayEnabled()) {
-//            mVideoView.stopPlayback();
-            mVideoView.release(true);
-//            mVideoView.stopBackgroundPlay();
-//        } else {
-//            mVideoView.enterBackground();
-//        }
-//        IjkMediaPlayer.native_profileEnd();
-    }
 
 
 }
