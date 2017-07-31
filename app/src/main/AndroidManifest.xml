@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.a.quarter">
-<uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 
     <application
@@ -22,8 +23,16 @@
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.LoginActivity_OtherActivity" />
         <activity android:name=".view.activity.SignActivity"></activity>
-        <activity android:name=".view.activity.DetailsAttentionVideoActivity"/>
-        <activity android:name=".view.activity.DetailsHotVideoActivity"/>
+        <activity android:name=".view.activity.DetailsAttentionVideoActivity" />
+        <activity android:name=".view.activity.DetailsHotVideoActivity" />
+        <activity android:name=".view.activity.FindPasswordActivity" />
+        <activity android:name=".view.activity.SetActivity"/>
+        <activity android:name=".view.activity.MyworksActivity" />
+        <activity android:name=".view.activity.MessageActivity" />
+        <activity android:name=".view.activity.FindFrandActivity" />
+        <activity android:name=".view.activity.MyCollectActivity" />
+        <activity android:name=".view.activity.AttentionActivity" />
+        <activity android:name=".view.activity.SatinActivity" />
     </application>
 
 </manifest>

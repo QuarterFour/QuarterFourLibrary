@@ -36,7 +36,6 @@ public class BasePresenter<T extends BaseView> {
         if (baseview != null) {
             return baseview.context();
         }
-
         return MyAppliction.context();
     }
 

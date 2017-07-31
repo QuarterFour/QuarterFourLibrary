@@ -48,12 +48,11 @@
                         android:layout_weight="1"
                         android:button="@null"
                         android:checked="true"
-                        android:drawableTop="@drawable/ic_normal_class"
+                        android:drawableTop="@drawable/like_icon"
                         android:gravity="center"
-                        android:padding="10dp"
                         android:text="推荐"
                         android:textColor="@drawable/textcolor"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
 
                     <RadioButton
                         android:button="@null"
@@ -62,10 +61,9 @@
                         android:layout_height="wrap_content"
                         android:drawableTop="@drawable/ic_goods_kefu"
                         android:gravity="center"
-                        android:padding="10dp"
                         android:text="段子"
                         android:textColor="@drawable/textcolor"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
 
                     <RadioButton
                         android:button="@null"
@@ -75,10 +73,9 @@
                         android:layout_weight="1"
                         android:drawableTop="@drawable/ic_goods_store"
                         android:gravity="center"
-                        android:padding="10dp"
                         android:text="视频"
                         android:textColor="@drawable/textcolor"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
 
                 </RadioGroup>
 

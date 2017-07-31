@@ -1,28 +1,30 @@
 package com.a.quarter.view.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.a.quarter.R;
+import com.a.quarter.model.base.BaseActivity;
 
-public class LoginActivity_OtherActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
+public class LoginActivity_OtherActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener {
     private Toolbar toolbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login__other);
-        initView();
+
 
     }
-//沉浸式
+
+    //沉浸式
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -39,16 +41,39 @@ public class LoginActivity_OtherActivity extends AppCompatActivity implements To
         }
     }
 
-    private void initView() {
+    @Override
+    protected void initData() {
+
+    }
+    @Override
+    protected  void initView() {
         //Toolbar相关
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.daohang);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(this);
+        findViewById(R.id.forget_password).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(LoginActivity_OtherActivity.this,FindPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_login__other;
+    }
+
+    @Override
+    protected void createPresenter() {
+
+    }
+
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
@@ -75,5 +100,10 @@ public class LoginActivity_OtherActivity extends AppCompatActivity implements To
                 break;
         }
         return true;
+    }
+
+    @Override
+    public Context context() {
+        return null;
     }
 }

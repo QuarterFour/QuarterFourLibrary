@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/mytoolbars" />
+
+
+<TextView
+    android:padding="10dp"
+    android:textSize="17sp"
+    android:background="#F9F9F9"
+    android:text="检查更新                                                         0.11 >"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+<View
+    android:layout_marginLeft="50dp"
+    android:background="#ADADAD"
+    android:layout_width="match_parent"
+    android:layout_height="2dp"></View>
+    <TextView
+        android:padding="10dp"
+        android:textSize="17sp"
+        android:background="#F9F9F9"
+        android:text="意见反馈                                                                  >"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+
+        android:background="#ADADAD"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"></View>
+
+
+
+
+    <TextView
+        android:padding="10dp"
+        android:textSize="17sp"
+        android:background="#F9F9F9"
+        android:text="关于一刻钟                                                              >"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_marginLeft="50dp"
+        android:background="#ADADAD"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"></View>
+    <TextView
+        android:padding="10dp"
+        android:textSize="17sp"
+        android:background="#F9F9F9"
+        android:text="清除缓存                                                        128M  >"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/exit"
+        android:textColor="#F9F9F9"
+        android:text="退出登录"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/myshop"
+        />
+
+</LinearLayout>

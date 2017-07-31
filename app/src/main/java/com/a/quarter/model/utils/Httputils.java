@@ -5,7 +5,6 @@ import android.util.Log;
 import com.a.quarter.model.base.ApiException;
 import com.a.quarter.model.base.BaseBean;
 import com.a.quarter.model.base.BaseObserver;
-import com.a.quarter.system.Contant;
 import com.a.quarter.view.iview.Api;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -47,10 +46,9 @@ public class Httputils {
     }
 
 
-    public static Api getApi() {
-
+    public static Api getApi(String url) {
         Api api = new Retrofit.Builder()
-                .baseUrl(Contant.BASE_URL)
+                .baseUrl(url)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

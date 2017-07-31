@@ -9,6 +9,7 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -74,4 +75,5 @@ dependencies {
     compile(name: 'ijkplayer-java-release', ext: 'aar')
 
     testCompile 'junit:junit:4.12'
+    compile 'com.youth.banner:banner:1.4.9'  //最新版本
 }

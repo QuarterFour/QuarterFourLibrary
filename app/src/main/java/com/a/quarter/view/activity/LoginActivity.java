@@ -1,30 +1,30 @@
 package com.a.quarter.view.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.a.quarter.R;
+import com.a.quarter.model.base.BaseActivity;
+import com.a.quarter.model.bean.LoginBean;
+import com.a.quarter.view.iview.LoginView;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener,LoginView {
 
     private Toolbar toolbar;
     private TextView other;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        initView();
+    protected void initData() {
 
     }
 
+    //沉浸式
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -41,8 +41,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void initView() {
-
+    protected void initView() {
         other = (TextView) findViewById(R.id.other);
         //Toolbar相关
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -50,7 +49,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         other.setOnClickListener(this);
+    }
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_login;
+    }
+
+    @Override
+    protected void createPresenter() {
 
     }
 
@@ -64,11 +71,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         return true;
     }
-
     //点击其他登陆方式的点击事件
     @Override
     public void onClick(View v) {
         Intent intent=new Intent(LoginActivity.this,LoginActivity_OtherActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public Context context() {
+        return null;
+    }
+//接收回调回的数据
+    @Override
+    public void CallBack(LoginBean loginBean) {
+
     }
 }
