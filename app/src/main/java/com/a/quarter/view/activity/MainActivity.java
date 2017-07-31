@@ -107,7 +107,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
-
+               // Toast.makeText(MainActivity.this, "你是要登陆吗？", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -132,14 +132,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
                         break;
                     case R.id.nav_seek:
-                       // Toast.makeText(MainActivity.this, "点击了 ：搜索好友", Toast.LENGTH_SHORT).show();
-                        intent=new Intent(MainActivity.this,FindFrandActivity.class);
-                        startActivity(intent);
+                        Toast.makeText(MainActivity.this, "点击了 ：搜索好友", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_massage:
-                       // Toast.makeText(MainActivity.this, "点击了 ：消息通知", Toast.LENGTH_SHORT).show();
-                         intent=new Intent(MainActivity.this,MessageActivity.class);
-                        startActivity(intent);
+                        Toast.makeText(MainActivity.this, "点击了 ：消息通知", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_myproduction:
                         //Toast.makeText(MainActivity.this, "点击了 ：我的作品", Toast.LENGTH_SHORT).show();
@@ -188,7 +184,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     public Context context() {
         return this;
     }
-//回调数据
+
     @Override
     public void CallBack(LoginBean loginBean) {
 
@@ -217,6 +213,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.compile:
+
+                Intent intent = new Intent(MainActivity.this, EditActivity.class);
+                startActivity(intent);
                 break;
         }
         return true;
