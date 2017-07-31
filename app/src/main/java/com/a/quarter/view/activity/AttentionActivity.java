@@ -111,4 +111,3 @@ public class AttentionActivity extends BaseActivity implements Toolbar.OnMenuIte
         return true;
     }
 }
-                               
