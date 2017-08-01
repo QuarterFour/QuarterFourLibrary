@@ -26,7 +26,6 @@ public class DetailsHotVideoActivity extends Activity{
     private IjkVideoView mVideoView;
     private AndroidMediaController mMediaController;
     private boolean mBackPressed;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +61,10 @@ public class DetailsHotVideoActivity extends Activity{
 
         mVideoView = (IjkVideoView) findViewById(R.id.DetailsHot_ijkPlay);
         mVideoView.setMediaController(mMediaController);
+
+//        mVideoView.setVideoPath();
         Uri uri= Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/123.mp4");
         mVideoView.setVideoURI(uri);
-
     }
 
     @Override
@@ -73,6 +73,18 @@ public class DetailsHotVideoActivity extends Activity{
         super.onBackPressed();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mBackPressed || !mVideoView.isBackgroundPlayEnabled()) {
+            mVideoView.stopPlayback();
+            mVideoView.release(true);
+            mVideoView.stopBackgroundPlay();
+        } else {
+            mVideoView.enterBackground();
+        }
+        IjkMediaPlayer.native_profileEnd();
 
+    }
 
 }

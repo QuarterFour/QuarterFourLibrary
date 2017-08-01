@@ -18,7 +18,7 @@ import com.a.quarter.view.adapter.MyVideoHotAdapter;
 /**
  * 作者: 陈春晖
  * 时间: 2017/7/25
- * 类的作用:
+ * 类的作用:hot界面里的布局
  * 实现思路:
  */
 
@@ -39,7 +39,7 @@ public class VideoFragment_Hot extends Fragment {
         super.onActivityCreated(savedInstanceState);
         initView();
     }
-
+//初始化控件
     private void initView() {
         video_recyclerView = (RecyclerView) getActivity().findViewById(R.id.VideoHot_RecyclerView);
         video_recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,

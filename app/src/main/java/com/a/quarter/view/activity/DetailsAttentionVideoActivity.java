@@ -61,17 +61,17 @@ public class DetailsAttentionVideoActivity extends Activity {
         mBackPressed=true;
     }
 
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        if (mBackPressed || !mVideoView.isBackgroundPlayEnabled()) {
-//            mVideoView.stopPlayback();
-//            mVideoView.release(true);
-//            mVideoView.stopBackgroundPlay();
-//        } else {
-//            mVideoView.enterBackground();
-//        }
-//        IjkMediaPlayer.native_profileEnd();
-//
-//    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mBackPressed || !mVideoView.isBackgroundPlayEnabled()) {
+            mVideoView.stopPlayback();
+            mVideoView.release(true);
+            mVideoView.stopBackgroundPlay();
+        } else {
+            mVideoView.enterBackground();
+        }
+        IjkMediaPlayer.native_profileEnd();
+
+    }
 }
