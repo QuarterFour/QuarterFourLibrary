@@ -44,7 +44,7 @@ public class MessageActivity extends BaseActivity {
 
     @Override
     public Context context() {
-        return null;
+        return this;
     }
 
     @Override

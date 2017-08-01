@@ -11,4 +11,25 @@ package com.a.quarter.model.bean;
  */
 
 public class SiginBean {
+
+    /**
+     * code : 200
+     */
+
+    private int code;
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    @Override
+    public String toString() {
+        return "SiginBean{" +
+                "code=" + code +
+                '}';
+    }
 }

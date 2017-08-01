@@ -45,7 +45,7 @@ public class FindPasswordActivity extends BaseActivity implements Toolbar.OnMenu
     }
     @Override
     public Context context() {
-        return null;
+        return this;
     }
 
     @Override

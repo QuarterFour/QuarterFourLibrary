@@ -46,7 +46,7 @@ public class MyCollectActivity extends BaseActivity implements Toolbar.OnMenuIte
     }
     @Override
     public Context context() {
-        return null;
+        return this;
     }
 
     @Override

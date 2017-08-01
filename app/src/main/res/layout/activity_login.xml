@@ -21,10 +21,11 @@
     android:layout_height="wrap_content"
     android:layout_marginRight="50dp"
     android:layout_marginLeft="50dp"
-    android:drawableLeft="@drawable/qq"
+    android:drawableLeft="@drawable/qqdenglu"
     android:text="QQ登陆"
     />
     <Button
+        android:id="@+id/main_weixinlogin"
       android:drawableLeft="@drawable/weixin"
         android:text="微信登陆"
         android:background="@drawable/myshop2"

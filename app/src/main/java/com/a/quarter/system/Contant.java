@@ -9,8 +9,8 @@ package com.a.quarter.system;
 
 public class Contant {
     //登陆注册
-    public static final String SIGIN_URL = "http://ip:8080/";
-    public static final String LOGIN_URL = "http://ip:8080/";
+    public static final String BASE_URL = "http://169.254.1.100/";
+
 
 
 }

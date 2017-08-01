@@ -96,19 +96,19 @@ public class SignActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     @Override
     protected void createPresenter() {
         siginPresenter = new SiginPresenter();
-        siginPresenter.attach(this);
+        siginPresenter.setBaseview(this);
 
     }
 
     @Override
     public Context context() {
-        return null;
+        return this;
     }
 //回调请求的返回结果
     @Override
     public void CallBack(SiginBean siginBean) {
 
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "wwwwwwww"+siginBean.getCode(), Toast.LENGTH_SHORT).show();
     }
 //点击注册按钮
     @Override
@@ -118,6 +118,6 @@ public class SignActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         String pwd = password.getText().toString();
         String sexs = sex.getText().toString();
         //点击调用注册接口
-        siginPresenter.getData(numb,name,pwd,sexs);
+        siginPresenter.getData(name,numb,sexs,pwd);
     }
 }

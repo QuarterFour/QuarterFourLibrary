@@ -52,12 +52,19 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     private DrawerLayout drawer_layout;
     private ActionMenuView mHomeAmv;
     private Intent intent;
+    private String username;
+    private String usersex;
 
     //初始化toolbar
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //登陆成功后返回用户名和性别
+        Intent intents = getIntent();
+        username = intents.getStringExtra("username");
+        usersex = intents.getStringExtra("usersex");
+
 
         initCreat();
         deleteFragnebt();
@@ -107,7 +114,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
-               // Toast.makeText(MainActivity.this, "你是要登陆吗？", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -181,7 +188,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     //获得presenter
     @Override
     protected void createPresenter() {
-        mPresenter = new MainPresenter();
+
     }
 
     @Override
@@ -217,20 +224,20 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.compile:
-
                 Intent intent = new Intent(MainActivity.this, EditActivity.class);
                 startActivity(intent);
                 break;
         }
         return true;
     }
+
+    //加载 res/menu/toolbar.xml 文件
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //加载 res/menu/toolbar.xml 文件
         getMenuInflater().inflate(R.menu.toolbar, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+//沉浸式
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);

@@ -6,16 +6,26 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.a.quarter.R;
 import com.a.quarter.model.base.BaseActivity;
+import com.a.quarter.model.bean.LoginBean;
+import com.a.quarter.presenter.Login_otherPresenter;
+import com.a.quarter.view.iview.LoginView;
 
-public class LoginActivity_OtherActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener {
+public class LoginActivity_OtherActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener,LoginView, View.OnClickListener {
     private Toolbar toolbar;
+    private Button other_login;
+    private Login_otherPresenter loginPresenter;
+    private TextInputEditText userpassword;
+    private TextInputEditText userphone;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,12 +57,17 @@ public class LoginActivity_OtherActivity extends BaseActivity implements Toolbar
     }
     @Override
     protected  void initView() {
+
+        userpassword = (TextInputEditText) findViewById(R.id.loginactivity_userpassword);
+        userphone = (TextInputEditText) findViewById(R.id.loginactivity_userphone);
+        other_login = (Button) findViewById(R.id.other_login);
         //Toolbar相关
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.daohang);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(this);
+        other_login.setOnClickListener(this);
         findViewById(R.id.forget_password).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +86,8 @@ public class LoginActivity_OtherActivity extends BaseActivity implements Toolbar
 
     @Override
     protected void createPresenter() {
-
+        loginPresenter = new Login_otherPresenter();
+        loginPresenter.setBaseview(this);
     }
 
     @Override
@@ -104,6 +120,24 @@ public class LoginActivity_OtherActivity extends BaseActivity implements Toolbar
 
     @Override
     public Context context() {
-        return null;
+        return this;
+    }
+//点击登录
+    @Override
+    public void onClick(View v) {
+        String myUserPhone = userphone.getText().toString();
+        String myUserPassword = userpassword.getText().toString();
+        loginPresenter.getData(myUserPhone,myUserPassword);
+    }
+//返回数据
+    @Override
+    public void CallBack(LoginBean loginBean) {
+        LoginBean.UserBean user = loginBean.getUser();
+        Toast.makeText(this, "登陆成功"+user.getUserName(), Toast.LENGTH_SHORT).show();
+        Intent intent=new Intent(LoginActivity_OtherActivity.this,MainActivity.class);
+        intent.putExtra("username",user.getUserName());
+        intent.putExtra("usersex",user.getUserSex());
+        startActivity(intent);
+        finish();
     }
 }

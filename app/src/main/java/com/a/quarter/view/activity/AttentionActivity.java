@@ -30,7 +30,7 @@ public class AttentionActivity extends BaseActivity implements Toolbar.OnMenuIte
 
     @Override
     public Context context() {
-        return null;
+        return this;
     }
 
     @Override

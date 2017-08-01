@@ -7,6 +7,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.a.quarter.R;
@@ -14,10 +15,12 @@ import com.a.quarter.model.base.BaseActivity;
 import com.a.quarter.model.bean.LoginBean;
 import com.a.quarter.view.iview.LoginView;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener,LoginView {
+public class LoginActivity extends BaseActivity implements View.OnClickListener, LoginView {
 
     private Toolbar toolbar;
     private TextView other;
+    private Button qqlogin;
+    private Button weixinlogin;
 
     @Override
     protected void initData() {
@@ -49,6 +52,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         other.setOnClickListener(this);
+        //微信登陆，qq登陆
+        qqlogin = (Button) findViewById(R.id.main_qqlogin);
+        weixinlogin = (Button) findViewById(R.id.main_weixinlogin);
+
     }
 
     @Override
@@ -58,6 +65,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     protected void createPresenter() {
+
 
     }
 
@@ -71,18 +79,20 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         }
         return true;
     }
+
     //点击其他登陆方式的点击事件
     @Override
     public void onClick(View v) {
-        Intent intent=new Intent(LoginActivity.this,LoginActivity_OtherActivity.class);
+        Intent intent = new Intent(LoginActivity.this, LoginActivity_OtherActivity.class);
         startActivity(intent);
     }
 
     @Override
     public Context context() {
-        return null;
+        return this;
     }
-//接收回调回的数据
+
+    //接收回调回的数据
     @Override
     public void CallBack(LoginBean loginBean) {
 

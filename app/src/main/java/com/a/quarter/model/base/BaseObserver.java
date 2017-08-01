@@ -46,7 +46,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     @Override
     public void onError(@NonNull Throwable e) {
-
+        LoadingDialogUtils.hideDialog();
         if (e instanceof ApiException) {
 //            Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
             ((ApiException)e).toastErr(mContext);
