@@ -30,7 +30,7 @@ public class SiginPresenter extends BasePresenter {
 
     public void getData(String username, String password, String userPhone, String userSex) {
 
-        Httputils.retrofitUtils((Observable<BaseBean<SiginBean>>) Httputils.getApi(Contant.SIGIN_URL).sigin(username, password, userPhone, userSex), new BaseObserver<SiginBean>(context()) {
+        Httputils.retrofitUtils((Observable<SiginBean>) Httputils.getApi(Contant.SIGIN_URL).sigin(username, password, userPhone, userSex), new BaseObserver<SiginBean>(context()) {
             @Override
             public void success(SiginBean siginBean) {
                 siginviews.CallBack(siginBean);

@@ -11,7 +11,7 @@
         android:orientation="horizontal">
 
 
-        <TextView
+        <ImageView
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
@@ -20,7 +20,7 @@
             android:layout_height="40dp"
             android:id="@+id/Detail_Back"/>
 
-        <TextView
+        <ImageView
             android:layout_centerVertical="true"
             android:layout_alignLeft="@id/Detail_Back"
             android:layout_marginLeft="50dp"
@@ -30,7 +30,7 @@
             android:background="@drawable/selector_like"
             android:id="@+id/Detail_like"/>
 
-        <TextView
+        <ImageView
             android:layout_alignLeft="@id/Detail_like"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50dp"
@@ -40,23 +40,23 @@
             android:layout_height="40dp"
             android:id="@+id/Detail_unlike"/>
 
-        <TextView
+        <ImageView
             android:layout_alignLeft="@id/Detail_unlike"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50dp"
             android:layout_gravity="center"
-            android:background="@mipmap/reship"
+            android:src="@drawable/reship"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/Detail_down"/>
 
-        <TextView
+        <ImageView
             android:layout_marginRight="20dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
-            android:background="@drawable/selector_like"
+            android:src="@drawable/selector_like"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/Detail_photo"/>

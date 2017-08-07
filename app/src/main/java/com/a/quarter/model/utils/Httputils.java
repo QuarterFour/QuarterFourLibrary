@@ -10,6 +10,7 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
@@ -25,25 +26,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Httputils {
 
 
-    public static<T> void retrofitUtils(Observable<BaseBean<T>> observable, BaseObserver<T> observer) {
+    public static<T> void retrofitUtils(Observable<T> observable, BaseObserver<T> observer) {
 
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<BaseBean<T>, T>() {
-                    @Override
-                    public T apply(BaseBean<T> tBaseBean) throws Exception {
-                        Log.d("Api", "tBaseBean-----------" + tBaseBean.toString());
-                        if (tBaseBean.getCode() != 0) {
-                            throw new ApiException(tBaseBean);
-                        }
-                        return tBaseBean.getData();
-                    }
-                })
                 .subscribe(observer);
 
 
     }
+
 
 
     public static Api getApi(String url) {

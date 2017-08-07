@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
 
-<LinearLayout
+<RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -15,16 +15,17 @@
         android:gravity="center"
         android:id="@+id/Hot_NameTextView"/>
     <ImageView
-        android:layout_width="100dp"
+        android:layout_below="@+id/Hot_NameTextView"
+        android:layout_width="wrap_content"
         android:src="@mipmap/ic_launcher"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:id="@+id/Hot_MapImageView"/>
     <!--<com.a.quarter.model.media.IjkVideoView-->
         <!--android:layout_width="150dp"-->
         <!--android:layout_height="150dp"-->
         <!--android:id="@+id/Video_ijkPlay"></com.a.quarter.model.media.IjkVideoView>-->
 
-</LinearLayout>
+</RelativeLayout>
 
 
 </LinearLayout>

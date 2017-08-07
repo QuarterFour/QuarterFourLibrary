@@ -1,11 +1,14 @@
 package com.a.quarter.view.iview;
 
 import com.a.quarter.model.base.BaseBean;
+import com.a.quarter.model.bean.HotBean;
 import com.a.quarter.model.bean.LoginBean;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -37,4 +40,11 @@ public interface Api {
     Call<BaseBean<LoginBean>> login(@Field("username") String username,
                                     @Field("password") String password
                                     );
+
+    @GET("quarter/media/showMedia")
+    Observable<HotBean> hot();
+
+
+
+
 }

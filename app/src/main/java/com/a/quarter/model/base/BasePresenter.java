@@ -1,6 +1,7 @@
 package com.a.quarter.model.base;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.a.quarter.system.MyAppliction;
 
@@ -34,8 +35,10 @@ public class BasePresenter<T extends BaseView> {
     protected Context context() {
 
         if (baseview != null) {
+            Log.e("This", "baseview.context(): "+baseview.context());
             return baseview.context();
         }
+        Log.e("This", "MyAppliction.context(): "+MyAppliction.context());
         return MyAppliction.context();
     }
 

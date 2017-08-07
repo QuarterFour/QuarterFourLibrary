@@ -11,7 +11,7 @@ public class BaseBean<T> {
 
     private  int code;
     private T data;
-    private String error;
+//    private String error;
 
 
     public int getCode() {
@@ -30,11 +30,11 @@ public class BaseBean<T> {
         this.data = data;
     }
 
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
+//    public String getError() {
+//        return error;
+//    }
+//
+//    public void setError(String error) {
+//        this.error = error;
+//    }
 }

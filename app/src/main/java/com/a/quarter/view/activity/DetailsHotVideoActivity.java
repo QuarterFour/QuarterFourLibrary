@@ -1,10 +1,13 @@
 package com.a.quarter.view.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,6 +16,10 @@ import media.IjkVideoView;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 import com.a.quarter.R;
+import com.a.quarter.model.bean.HotBean;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * 作者: 陈春晖
@@ -26,31 +33,79 @@ public class DetailsHotVideoActivity extends Activity{
     private IjkVideoView mVideoView;
     private AndroidMediaController mMediaController;
     private boolean mBackPressed;
+    private String videoSrc;
+    private ImageView backImagView;
+    private ImageView likeImageView;
+    private ImageView unlikeImageView;
+    private ImageView downImageView;
+    private LinearLayout writeLinear;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.video_hot_details);
+        initDate();
         initView();
         initIjkPlay();
         initEvent();
     }
 
+    private void initDate() {
+        Intent intent = getIntent();
+        videoSrc = intent.getStringExtra("VideoSrc");
+    }
+
     private void initView() {
-        TextView backText= (TextView) findViewById(R.id.Detail_Back);
-        TextView likeText = (TextView) findViewById(R.id.Detail_like);
-        TextView unlikeText = (TextView) findViewById(R.id.Detail_unlike);
-        TextView downText = (TextView) findViewById(R.id.Detail_down);
-       LinearLayout writeLinear= (LinearLayout) findViewById(R.id.Detail_writeLinear);
+        backImagView = (ImageView) findViewById(R.id.Detail_Back);
+        likeImageView = (ImageView) findViewById(R.id.Detail_like);
+        unlikeImageView = (ImageView) findViewById(R.id.Detail_unlike);
+        downImageView = (ImageView) findViewById(R.id.Detail_down);
+        writeLinear = (LinearLayout) findViewById(R.id.Detail_writeLinear);
     }
 
     private void initEvent() {
-    mVideoView.setOnPreparedListener(new IMediaPlayer.OnPreparedListener() {
-        @Override
-        public void onPrepared(IMediaPlayer iMediaPlayer) {
+        //返回
+        backImagView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    finish();
+            }
+        });
+        //喜欢
+        likeImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    mVideoView.start();
-        }
-    });
+            }
+        });
+        //不喜欢
+        unlikeImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        downImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //写评论
+        writeLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        mVideoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mVideoView.start();
+            }
+        });
 
     }
 
@@ -62,9 +117,11 @@ public class DetailsHotVideoActivity extends Activity{
         mVideoView = (IjkVideoView) findViewById(R.id.DetailsHot_ijkPlay);
         mVideoView.setMediaController(mMediaController);
 
-//        mVideoView.setVideoPath();
-        Uri uri= Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/123.mp4");
-        mVideoView.setVideoURI(uri);
+        mVideoView.setVideoPath(videoSrc);
+//        Uri uri= Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/123.mp4");
+//        mVideoView.setVideoURI(uri);
+
+
     }
 
     @Override
