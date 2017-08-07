@@ -10,7 +10,7 @@ import java.util.List;
  * 实现思路:
  */
 
-public class HotBean {
+public class HotVideoBean {
 
     /**
      * code : 200

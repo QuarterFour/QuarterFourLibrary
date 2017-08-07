@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.a.quarter.R;
-import com.a.quarter.model.bean.HotBean;
+import com.a.quarter.model.bean.HotVideoBean;
 import com.a.quarter.presenter.HotPresenter;
 import com.a.quarter.view.activity.DetailsHotVideoActivity;
 import com.a.quarter.view.adapter.MyVideoHotAdapter;
@@ -35,7 +35,7 @@ public class VideoFragment_Hot extends Fragment implements HotFragmentView{
     private RecyclerView video_recyclerView;
     private MyVideoHotAdapter adapter;
     private HotPresenter presenter;
-    private List<HotBean.MediaBean> media = new ArrayList<>();
+    private List<HotVideoBean.MediaBean> media = new ArrayList<>();
 
     @Nullable
     @Override
@@ -86,7 +86,7 @@ public class VideoFragment_Hot extends Fragment implements HotFragmentView{
     }
 
     @Override
-    public void CallBack(HotBean hotBean) {
+    public void CallBack(HotVideoBean hotBean) {
         media = hotBean.getMedia();
             adapter.getdata(media);
 

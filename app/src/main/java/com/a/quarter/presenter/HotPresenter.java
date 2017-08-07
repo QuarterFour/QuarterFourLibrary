@@ -5,7 +5,7 @@ package com.a.quarter.presenter;
 import com.a.quarter.model.base.BaseBean;
 import com.a.quarter.model.base.BaseObserver;
 import com.a.quarter.model.base.BasePresenter;
-import com.a.quarter.model.bean.HotBean;
+import com.a.quarter.model.bean.HotVideoBean;
 import com.a.quarter.model.utils.Httputils;
 import com.a.quarter.system.Contant;
 import com.a.quarter.view.iview.HotFragmentView;
@@ -24,9 +24,9 @@ public class HotPresenter extends BasePresenter<HotFragmentView> {
 
     public  void getData(){
 
-    Httputils.retrofitUtils((Observable<HotBean>) Httputils.getApi(Contant.HOT_URL).hot(), new BaseObserver<HotBean>(context()) {
+    Httputils.retrofitUtils((Observable<HotVideoBean>) Httputils.getApi(Contant.HOT_URL).hot(), new BaseObserver<HotVideoBean>(context()) {
         @Override
-        public void success(HotBean hotBean) {
+        public void success(HotVideoBean hotBean) {
                     getBaseview().CallBack(hotBean);
 
         }

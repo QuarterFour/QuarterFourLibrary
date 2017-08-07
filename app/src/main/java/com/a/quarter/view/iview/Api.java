@@ -1,7 +1,7 @@
 package com.a.quarter.view.iview;
 
 import com.a.quarter.model.base.BaseBean;
-import com.a.quarter.model.bean.HotBean;
+import com.a.quarter.model.bean.HotVideoBean;
 import com.a.quarter.model.bean.LoginBean;
 
 import io.reactivex.Observable;
@@ -42,7 +42,7 @@ public interface Api {
                                     );
 
     @GET("quarter/media/showMedia")
-    Observable<HotBean> hot();
+    Observable<HotVideoBean> hot();
 
 
 

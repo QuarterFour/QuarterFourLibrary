@@ -16,7 +16,7 @@ import media.IjkVideoView;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 import com.a.quarter.R;
-import com.a.quarter.model.bean.HotBean;
+import com.a.quarter.model.bean.HotVideoBean;
 
 import java.io.Serializable;
 import java.util.List;

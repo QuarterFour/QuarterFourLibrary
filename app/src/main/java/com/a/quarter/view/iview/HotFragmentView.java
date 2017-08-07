@@ -1,7 +1,8 @@
 package com.a.quarter.view.iview;
 
 import com.a.quarter.model.base.BaseView;
-import com.a.quarter.model.bean.HotBean;
+import com.a.quarter.model.bean.HotVideoBean;
+
 
 /**
  * 作者: 陈春晖
@@ -11,6 +12,6 @@ import com.a.quarter.model.bean.HotBean;
  */
 
 public interface HotFragmentView extends BaseView {
-    void CallBack(HotBean hotBean);
+    void CallBack(HotVideoBean hotBean);
 
 }

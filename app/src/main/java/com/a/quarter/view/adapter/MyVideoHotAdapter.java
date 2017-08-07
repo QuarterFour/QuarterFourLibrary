@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a.quarter.R;
-import com.a.quarter.model.bean.HotBean;
+import com.a.quarter.model.bean.HotVideoBean;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import java.util.List;
 public class MyVideoHotAdapter extends RecyclerView.Adapter<MyVideoHotAdapter.MyViewHolder> {
     private Context context;
     private OnItemClickLitener mOnItemClickLitener;
-    private List<HotBean.MediaBean> media = new ArrayList<>();
+    private List<HotVideoBean.MediaBean> media = new ArrayList<>();
 
     public MyVideoHotAdapter(Context context) {
             this.context = context;
@@ -37,7 +37,7 @@ public class MyVideoHotAdapter extends RecyclerView.Adapter<MyVideoHotAdapter.My
 
 
 
-    public void getdata(List<HotBean.MediaBean> media) {
+    public void getdata(List<HotVideoBean.MediaBean> media) {
         if (media!=null){
             this.media =media;
         }
