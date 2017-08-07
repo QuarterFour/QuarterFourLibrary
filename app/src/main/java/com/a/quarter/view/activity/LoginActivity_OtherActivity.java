@@ -58,7 +58,7 @@ public class LoginActivity_OtherActivity extends BaseActivity implements Toolbar
 
     @Override
     protected void initData() {
-  
+
     }
 
     @Override

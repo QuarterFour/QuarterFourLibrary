@@ -15,8 +15,6 @@ public class MainPresenter extends BasePresenter<MainView> {
 
 
 
-    public  void getData(String username,String password,String userPhone,String userSex){
-
 
 
     }
@@ -29,4 +27,4 @@ public class MainPresenter extends BasePresenter<MainView> {
 
 
 
-}
+
