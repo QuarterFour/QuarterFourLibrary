@@ -1,5 +1,7 @@
 package com.a.quarter.presenter;
 
+import android.util.Log;
+
 import com.a.quarter.model.base.BaseObserver;
 import com.a.quarter.model.base.BasePresenter;
 import com.a.quarter.model.bean.SiginBean;
@@ -17,16 +19,13 @@ import com.a.quarter.view.iview.SiginView;
  */
 
 public class SiginPresenter extends BasePresenter<SiginView> {
-
-
-    public void getData(String username, String password, String userPhone, String userSex) {
-
-        Httputils.retrofitUtils(Httputils.getApi().sigin(username, password, userPhone, userSex), new BaseObserver<SiginBean>(context()) {
+    public void getData(String userName, String userPassword, String userPhone, String userSex) {
+        Log.e( "getData: ","dddddddddd" );
+        Httputils.retrofitUtils(Httputils.getApi().sigin(userName, userPassword, userPhone, userSex), new BaseObserver<SiginBean>(context()) {
             @Override
             public void success(SiginBean siginBean) {
                getBaseview().CallBack(siginBean);
             }
         });
     }
-
 }

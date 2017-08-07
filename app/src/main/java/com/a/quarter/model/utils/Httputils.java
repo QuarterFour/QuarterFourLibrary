@@ -19,10 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class Httputils {
-
-
     public static<T> void retrofitUtils(Observable<T> observable, BaseObserver<T> observer) {
-
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

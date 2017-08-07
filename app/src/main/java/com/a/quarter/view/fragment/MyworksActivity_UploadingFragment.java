@@ -1,13 +1,6 @@
 package com.a.quarter.view.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.a.quarter.R;
+import static com.a.quarter.R.layout.myworksactivity_uplodingfragment_layout;
 
 /**
  * 类的作用：
@@ -19,15 +12,21 @@ import com.a.quarter.R;
  * on 2017/7/21 21
  */
 
-public class MyworksActivity_UploadingFragment extends Fragment {
+public class MyworksActivity_UploadingFragment extends BaseFragment {
 
-    @Nullable
+
     @Override
-
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.myworksactivity_uplodingfragment_layout,container,false);
-
+    protected void initView() {
 
     }
 
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected int setFragmentLayout() {
+        return myworksactivity_uplodingfragment_layout;
+    }
 }

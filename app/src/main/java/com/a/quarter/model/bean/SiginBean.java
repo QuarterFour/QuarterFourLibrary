@@ -13,23 +13,29 @@ package com.a.quarter.model.bean;
 public class SiginBean {
 
     /**
+     * code : 500!message:13717736250已存在!!!!!!
+     */
+
+    private String code;
+
+    /**
      * code : 200
      */
 
-    private int code;
 
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
 
     @Override
     public String toString() {
         return "SiginBean{" +
                 "code=" + code +
                 '}';
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

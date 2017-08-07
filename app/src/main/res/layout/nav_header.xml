@@ -9,19 +9,17 @@
         android:id="@+id/icon_image"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/header"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/header" />
 
     <ImageView
-
-        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/bianji"
+        android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
-        />
+        android:src="@mipmap/bianji" />
 
     <TextView
         android:id="@+id/describe"
@@ -31,22 +29,21 @@
         android:text="编辑个人签名"
         android:textColor="#FFF"
         android:textSize="18sp" />
-
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/icon_image"
+        android:layout_toRightOf="@+id/icon_image"
         android:text="songmofan"
         android:textColor="#FFF"
-        android:textSize="14sp"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/icon_image"
-        android:layout_toEndOf="@+id/icon_image"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp" />
+        android:textSize="14sp" />
+
     <ImageView
+        android:id="@+id/head"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-          android:id="@+id/head"
-        />
+        android:layout_height="wrap_content" />
 </RelativeLayout>
