@@ -1,17 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    
+    <RelativeLayout
+        android:id="@+id/topLinerar"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/detailback"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/Detail_Back"/>
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@id/Detail_Back"
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/selector_like"
+            android:id="@+id/Detail_like"/>
+
+        <ImageView
+            android:layout_alignLeft="@id/Detail_like"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/selector_unlike"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/Detail_unlike"/>
+
+        <ImageView
+            android:layout_alignLeft="@id/Detail_unlike"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/reship"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/Detail_down"/>
+
+        <ImageView
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/selector_like"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/Detail_photo"/>
+    </RelativeLayout>
+    
+    
+    
 <LinearLayout
+    android:layout_below="@+id/topLinerar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.a.quarter.model.media.IjkVideoView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/DetailsHot_ijkPlay"></com.a.quarter.model.media.IjkVideoView>
+
+        <media.IjkVideoView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/DetailsHot_ijkPlay"/>
+
+
 
     <TextView
         android:layout_width="match_parent"
@@ -36,35 +101,52 @@
         android:layout_height="200dp">
 
         <ImageView
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_marginTop="20dp"
             android:id="@+id/DetailsHot_Image"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/ic_launcher"
-            android:layout_height="100dp" />
+            android:src="@mipmap/comment"
+            android:layout_height="120dp" />
 
         <TextView
             android:layout_below="@+id/DetailsHot_Image"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
-            android:text="拿起手机速来抢个沙发吧"/>
+            android:text="拿起手机速来抢个沙发吧 ! ~~"/>
 
     </RelativeLayout>
 
 </LinearLayout>
 
+<LinearLayout
+    android:layout_marginBottom="10dp"
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:id="@+id/Detail_writeLinear"
+    android:layout_height="30dp"
+    android:orientation="horizontal">
 
+    <ImageView
+        android:layout_gravity="center_vertical"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/write"/>
 
     <TextView
+        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
+        android:layout_gravity="center_vertical"
         android:layout_height="wrap_content"
         android:id="@+id/Details_writeTextView"
-        android:layout_alignParentBottom="true"
-        android:drawableLeft="@drawable/ic_goods_store"
         android:textSize="20sp"
-        android:padding="5dp"
         android:text="写评论"/>
+
+
+</LinearLayout>
+
+
 
 
 

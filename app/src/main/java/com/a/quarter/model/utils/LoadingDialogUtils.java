@@ -1,6 +1,7 @@
 package com.a.quarter.model.utils;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.a.quarter.R;
 import com.a.quarter.ui.LoadingDialog;

@@ -8,6 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a.quarter.R;
+import com.a.quarter.model.bean.HotVideoBean;
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 作者: 陈春晖
@@ -19,6 +24,7 @@ import com.a.quarter.R;
 public class MyVideoHotAdapter extends RecyclerView.Adapter<MyVideoHotAdapter.MyViewHolder> {
     private Context context;
     private OnItemClickLitener mOnItemClickLitener;
+    private List<HotVideoBean.MediaBean> media = new ArrayList<>();
 
     public MyVideoHotAdapter(Context context) {
             this.context = context;
@@ -28,6 +34,16 @@ public class MyVideoHotAdapter extends RecyclerView.Adapter<MyVideoHotAdapter.My
     {
         this.mOnItemClickLitener = mOnItemClickLitener;
     }
+
+
+
+    public void getdata(List<HotVideoBean.MediaBean> media) {
+        if (media!=null){
+            this.media =media;
+        }
+        notifyDataSetChanged();
+    }
+
     public interface OnItemClickLitener
     {
         void onItemClick(View view, int position);
@@ -46,8 +62,9 @@ public class MyVideoHotAdapter extends RecyclerView.Adapter<MyVideoHotAdapter.My
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 //             Uri uri= Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/123.mp4");
 //            holder.mVideoView.setVideoURI(uri);
-        holder.mNameTextView.setText("-----Hot-----");
-        holder.mImageView.setImageResource(R.mipmap.ic_launcher);
+        holder.mNameTextView.setText(media.get(position).getMediaName() );
+        Glide.with(context).load(media.get(position).getMediaPictureSrc()).into(holder.mImageView);
+//        holder.mImageView.setImageURI(media.get(position).getMediaDescription());
         //通过getVideoThumbnail方法取得视频中的第一帧图片，该图片是一个bitmap对象
 //        Bitmap bitmap=getVideoThumbnail("");
 //将bitmap对象转换成drawable对象
@@ -86,7 +103,7 @@ public class MyVideoHotAdapter extends RecyclerView.Adapter<MyVideoHotAdapter.My
     @Override
     public int getItemCount() {
 
-        return 5;
+        return media.size();
     }
     class MyViewHolder extends RecyclerView.ViewHolder {
 

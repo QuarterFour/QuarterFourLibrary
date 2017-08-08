@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,11 +40,13 @@ public class VideoFragment_Attention extends Fragment {
 
     private void initView() {
         video_recyclerView = (RecyclerView) getActivity().findViewById(R.id.VideoAttention_RecyclerView);
+
         video_recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,
                 StaggeredGridLayoutManager.VERTICAL));
 //        video_recyclerView.setItemAnimator(new DefaultItemAnimator());
         adapter = new MyVideoAttentionAdapter(getActivity());
         video_recyclerView.setAdapter(adapter);
+        //recyclerView的条目点击事件
         adapter.setOnItemClickLitener(new MyVideoAttentionAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {

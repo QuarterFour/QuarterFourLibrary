@@ -33,6 +33,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
     @Override
     public void onSubscribe(@NonNull Disposable d) {
 
+        Log.e("onSubscribe: ","mContext="+  mContext);
         //进度条展示
         LoadingDialogUtils.showDialog(mContext);
 
@@ -69,6 +70,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
             Toast.makeText(mContext, "未知错误", Toast.LENGTH_SHORT).show();
         }
         Log.d("TAG", "e:" + e);
+        Toast.makeText(mContext,e.toString(),Toast.LENGTH_SHORT).show();
 
 
 

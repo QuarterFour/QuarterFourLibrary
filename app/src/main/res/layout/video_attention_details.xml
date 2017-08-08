@@ -4,15 +4,16 @@
     android:layout_height="match_parent">
 
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.a.quarter.model.media.IjkVideoView
+        <media.IjkVideoView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:id="@+id/DetailsAttenton_ijkPlay"></com.a.quarter.model.media.IjkVideoView>
+            android:id="@+id/DetailsAttenton_ijkPlay"></media.IjkVideoView>
 
         <TextView
             android:layout_width="match_parent"

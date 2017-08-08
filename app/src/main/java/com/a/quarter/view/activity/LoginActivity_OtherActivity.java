@@ -31,6 +31,7 @@ public class LoginActivity_OtherActivity extends BaseActivity implements Toolbar
     private TextView youke;
     private Intent intent;
     private SharedPreferences.Editor edit;
+    private boolean islogin;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -126,7 +127,7 @@ public class LoginActivity_OtherActivity extends BaseActivity implements Toolbar
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
+              finish();
                 break;
         }
         return true;
@@ -157,6 +158,7 @@ public class LoginActivity_OtherActivity extends BaseActivity implements Toolbar
         if ("200".equals(loginBean.getCode())) {
             edit.putBoolean("islogin", true);
             edit.commit();
+
             Intent intent = new Intent(LoginActivity_OtherActivity.this, MainActivity.class);
             intent.putExtra("username", user.getUserName());
             intent.putExtra("usersex", user.getUserSex());
