@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 import com.a.quarter.R;
 import com.a.quarter.model.bean.HotBean;
@@ -112,6 +111,6 @@ public class RecommendFragment_HotFragment extends Fragment implements Recommend
         List<HotBean.ResourceBean> resource = hotBean.getResource();
         adpter.setData(resource);
         adpter.notifyDataSetChanged();
-        Toast.makeText(context(), "hotttt" + resource, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context(), "hotttt" + resource, Toast.LENGTH_SHORT).show();
     }
 }

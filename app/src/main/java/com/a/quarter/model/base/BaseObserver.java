@@ -30,6 +30,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
         this.mContext = context;
     }
 
+
     @Override
     public void onSubscribe(@NonNull Disposable d) {
 

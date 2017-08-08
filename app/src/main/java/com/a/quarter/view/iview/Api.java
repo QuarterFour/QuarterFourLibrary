@@ -2,7 +2,9 @@ package com.a.quarter.view.iview;
 
 import com.a.quarter.model.bean.AttentionBean;
 import com.a.quarter.model.bean.HotBean;
+import com.a.quarter.model.bean.HotVideoBean;
 import com.a.quarter.model.bean.LoginBean;
+import com.a.quarter.model.bean.MyworksActivity_LocaBean;
 import com.a.quarter.model.bean.SiginBean;
 
 import io.reactivex.Observable;
@@ -51,5 +53,19 @@ public interface Api {
 //查询我关注的好友
     @GET("quarter/user/myFollow")
     Observable<AttentionBean> attention(@Query("Userid") int Userid);
+
+
+
+    //热门视频接口
+    @GET("quarter/media/showMedia")
+    Observable<HotVideoBean> hot();
+
+    //我的作品
+    @GET("quarter/user/selectUserAll")
+    Observable<MyworksActivity_LocaBean> Mywarks(@Query("id") int id);
+
+
+
+
 
 }

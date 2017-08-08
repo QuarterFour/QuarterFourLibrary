@@ -26,7 +26,6 @@ public class Httputils {
                 .subscribe(observer);
     }
 
-
     public static Api getApi() {
         Api api = new Retrofit.Builder()
                 .baseUrl(Contant.BASE_URL)

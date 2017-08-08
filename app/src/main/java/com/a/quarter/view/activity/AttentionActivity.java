@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -15,7 +16,10 @@ import com.a.quarter.R;
 import com.a.quarter.model.base.BaseActivity;
 import com.a.quarter.model.bean.AttentionBean;
 import com.a.quarter.presenter.MyAttentionActivityPresenter;
+import com.a.quarter.view.adapter.AttentionActivity_recycalviewAdapter;
 import com.a.quarter.view.iview.MyAttentionView;
+
+import java.util.List;
 
 /**
  * 类的作用：
@@ -32,6 +36,8 @@ public class AttentionActivity extends BaseActivity implements Toolbar.OnMenuIte
     private TabLayout mTabLayout;
     private Toolbar toolbar;
     private RecyclerView recyclerview;
+    private List<AttentionBean.UserBean> user;
+    private AttentionActivity_recycalviewAdapter adapter;
 
     @Override
     public Context context() {
@@ -46,22 +52,15 @@ public class AttentionActivity extends BaseActivity implements Toolbar.OnMenuIte
     @Override
     protected void initView() {
         recyclerview = (RecyclerView) findViewById(R.id.attention_recyclerview);
-        mTabLayout = (TabLayout) findViewById(R.id.attentionactivity_tab_layout);
+     LinearLayoutManager layoutManager=new LinearLayoutManager(context());
+        recyclerview.setLayoutManager(layoutManager);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.daohang);
         toolbar.setTitle("我的关注");
         setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(this);
-        mTabLayout.addTab(mTabLayout.newTab().setText("1"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("2"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("3"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("4"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("5"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("6"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("7"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("8"));
-        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
-
+        adapter = new AttentionActivity_recycalviewAdapter(context());
+          recyclerview.setAdapter(adapter);
     }
 
     @Override
@@ -128,6 +127,9 @@ public class AttentionActivity extends BaseActivity implements Toolbar.OnMenuIte
     //接口回调数据
     @Override
     public void callback(AttentionBean attentionBen) {
-        Toast.makeText(this, "嘤嘤~~"+attentionBen.getCode(), Toast.LENGTH_SHORT).show();
+
+        user = attentionBen.getUser();
+        adapter.setdata(user);
+        adapter.notifyDataSetChanged();
     }
 }

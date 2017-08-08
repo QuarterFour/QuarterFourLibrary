@@ -9,7 +9,7 @@ package com.a.quarter.system;
 
 public class Contant {
     //登陆注册
-    public static final String BASE_URL = "http://169.254.1.100/";
+    public static final String BASE_URL = "http://192.168.1.100/";
 
 
 

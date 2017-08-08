@@ -2,24 +2,17 @@ package com.a.quarter.view.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+
+import com.a.quarter.R;
 
 import media.AndroidMediaController;
 import media.IjkVideoView;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
-import com.a.quarter.R;
-import com.a.quarter.model.bean.HotVideoBean;
-
-import java.io.Serializable;
-import java.util.List;
 
 /**
  * 作者: 陈春晖
