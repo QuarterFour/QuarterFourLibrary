@@ -45,6 +45,11 @@ public class VideoFragment_Hot extends Fragment implements HotFragmentView{
     }
 
     @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
@@ -67,6 +72,8 @@ public class VideoFragment_Hot extends Fragment implements HotFragmentView{
                 if (media!=null){
                     intent.putExtra("VideoSrc", (Serializable) media.get(position).getMediaSrc());
 
+
+                    
                 }
                 startActivity(intent);
             }

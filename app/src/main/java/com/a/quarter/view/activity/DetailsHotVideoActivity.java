@@ -2,24 +2,15 @@ package com.a.quarter.view.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import media.AndroidMediaController;
 import media.IjkVideoView;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
-import com.a.quarter.R;
-import com.a.quarter.model.bean.HotVideoBean;
-
-import java.io.Serializable;
-import java.util.List;
+import com.a.quarter.R;;
 
 /**
  * 作者: 陈春晖
@@ -34,11 +25,11 @@ public class DetailsHotVideoActivity extends Activity{
     private AndroidMediaController mMediaController;
     private boolean mBackPressed;
     private String videoSrc;
-    private ImageView backImagView;
-    private ImageView likeImageView;
-    private ImageView unlikeImageView;
-    private ImageView downImageView;
-    private LinearLayout writeLinear;
+    private CheckBox backCheckBox;
+    private CheckBox likeCheckBox;
+    private CheckBox unlikeCheckBox;
+    private CheckBox downCheckBox;
+//    private LinearLayout writeLinear;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,49 +47,60 @@ public class DetailsHotVideoActivity extends Activity{
     }
 
     private void initView() {
-        backImagView = (ImageView) findViewById(R.id.Detail_Back);
-        likeImageView = (ImageView) findViewById(R.id.Detail_like);
-        unlikeImageView = (ImageView) findViewById(R.id.Detail_unlike);
-        downImageView = (ImageView) findViewById(R.id.Detail_down);
-        writeLinear = (LinearLayout) findViewById(R.id.Detail_writeLinear);
+        backCheckBox = (CheckBox) findViewById(R.id.Detail_Back);
+        likeCheckBox = (CheckBox) findViewById(R.id.Detail_like);
+        unlikeCheckBox = (CheckBox) findViewById(R.id.Detail_unlike);
+        downCheckBox = (CheckBox) findViewById(R.id.Detail_down);
+//        writeLinear = (LinearLayout) findViewById(R.id.Detail_writeLinear);
     }
 
     private void initEvent() {
         //返回
-        backImagView.setOnClickListener(new View.OnClickListener() {
+        backCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     finish();
             }
         });
         //喜欢
-        likeImageView.setOnClickListener(new View.OnClickListener() {
+        likeCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                    if (likeCheckBox.isChecked()){
+                        likeCheckBox.setBackgroundResource(R.drawable.like);
+                    }else {
+                        likeCheckBox.setBackgroundResource(R.drawable.like1);
+                    }
+
 
             }
         });
         //不喜欢
-        unlikeImageView.setOnClickListener(new View.OnClickListener() {
+        unlikeCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                if (unlikeCheckBox.isChecked()){
+                    unlikeCheckBox.setBackgroundResource(R.drawable.unlike);
+                }else {
+                    unlikeCheckBox.setBackgroundResource(R.drawable.unlike1);
+                }
             }
         });
 
-        downImageView.setOnClickListener(new View.OnClickListener() {
+        downCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
         //写评论
-        writeLinear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        writeLinear.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
 
         mVideoView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +120,7 @@ public class DetailsHotVideoActivity extends Activity{
         mVideoView.setMediaController(mMediaController);
 
         mVideoView.setVideoPath(videoSrc);
+//        mVideoView.start();
 //        Uri uri= Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/123.mp4");
 //        mVideoView.setVideoURI(uri);
 

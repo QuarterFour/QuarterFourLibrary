@@ -25,7 +25,7 @@ public class MainPresenter extends BasePresenter<MainView> {
     public  void getData(String username,String password,String userPhone,String userSex){
 
        // Observable<BaseBean<LoginBean>> login = Httputils.getApi().Login(username);
-        Httputils.retrofitUtils((Observable<LoginBean>) Httputils.getApi(Contant.LOGIN_URL).sigin(username,password,userPhone,userSex),new BaseObserver<LoginBean>(context()) {
+        Httputils.retrofitUtils((Observable<LoginBean>) Httputils.getApi().sigin(username,password,userPhone,userSex),new BaseObserver<LoginBean>(context()) {
             @Override
             public void success(LoginBean loginBean) {
 

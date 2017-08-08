@@ -11,52 +11,60 @@
         android:orientation="horizontal">
 
 
-        <ImageView
+        <CheckBox
+            android:button="@null"
+            android:background="@drawable/detailback"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
-            android:background="@drawable/detailback"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/Detail_Back"/>
 
-        <ImageView
+        <CheckBox
+            android:button="@null"
+            android:checked="false"
+            android:background="@drawable/like"
             android:layout_centerVertical="true"
             android:layout_alignLeft="@id/Detail_Back"
             android:layout_marginLeft="50dp"
             android:layout_gravity="center"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/selector_like"
             android:id="@+id/Detail_like"/>
 
-        <ImageView
+        <CheckBox
+            android:button="@null"
+            android:checked="false"
+            android:background="@drawable/unlike"
             android:layout_alignLeft="@id/Detail_like"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50dp"
             android:layout_gravity="center"
-            android:background="@drawable/selector_unlike"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/Detail_unlike"/>
 
-        <ImageView
+        <CheckBox
+            android:button="@null"
+            android:checked="false"
             android:layout_alignLeft="@id/Detail_unlike"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50dp"
             android:layout_gravity="center"
-            android:src="@drawable/reship"
+            android:background="@drawable/reship"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/Detail_down"/>
 
-        <ImageView
+        <CheckBox
             android:layout_marginRight="20dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
-            android:src="@drawable/selector_like"
+            android:button="@null"
+            android:background="@drawable/like"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/Detail_photo"/>
@@ -71,10 +79,16 @@
     android:orientation="vertical">
 
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <media.IjkVideoView
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:id="@+id/DetailsHot_ijkPlay"/>
+
+    </FrameLayout>
 
 
 
@@ -120,31 +134,31 @@
 
 </LinearLayout>
 
-<LinearLayout
-    android:layout_marginBottom="10dp"
-    android:layout_alignParentBottom="true"
-    android:layout_width="match_parent"
-    android:id="@+id/Detail_writeLinear"
-    android:layout_height="30dp"
-    android:orientation="horizontal">
+<!--<LinearLayout-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:id="@+id/Detail_writeLinear"-->
+    <!--android:layout_height="30dp"-->
+    <!--android:orientation="horizontal">-->
 
-    <ImageView
-        android:layout_gravity="center_vertical"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:src="@drawable/write"/>
+    <!--<ImageView-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:layout_width="25dp"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:src="@drawable/write"/>-->
 
-    <TextView
-        android:layout_marginLeft="20dp"
-        android:layout_width="match_parent"
-        android:layout_gravity="center_vertical"
-        android:layout_height="wrap_content"
-        android:id="@+id/Details_writeTextView"
-        android:textSize="20sp"
-        android:text="写评论"/>
+    <!--<TextView-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/Details_writeTextView"-->
+        <!--android:textSize="20sp"-->
+        <!--android:text="写评论"/>-->
 
 
-</LinearLayout>
+<!--</LinearLayout>-->
 
 
 

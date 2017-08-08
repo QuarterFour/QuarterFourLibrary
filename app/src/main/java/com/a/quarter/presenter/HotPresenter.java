@@ -24,7 +24,7 @@ public class HotPresenter extends BasePresenter<HotFragmentView> {
 
     public  void getData(){
 
-    Httputils.retrofitUtils((Observable<HotVideoBean>) Httputils.getApi(Contant.HOT_URL).hot(), new BaseObserver<HotVideoBean>(context()) {
+    Httputils.retrofitUtils(Httputils.getApi().hot(), new BaseObserver<HotVideoBean>(context()) {
         @Override
         public void success(HotVideoBean hotBean) {
                     getBaseview().CallBack(hotBean);
