@@ -73,7 +73,7 @@ public class VideoFragment_Hot extends Fragment implements HotFragmentView{
                     intent.putExtra("VideoSrc", (Serializable) media.get(position).getMediaSrc());
 
 
-                    
+
                 }
                 startActivity(intent);
             }
