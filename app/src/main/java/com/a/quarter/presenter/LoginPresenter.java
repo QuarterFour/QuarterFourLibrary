@@ -28,9 +28,9 @@ public class LoginPresenter extends BasePresenter {
     }
 
 
-    public  void getData(String username, String password, String userPhone, String userSex) {
+    public  void getData( String password, String userPhone) {
 
-        Httputils.retrofitUtils((Observable<LoginBean>) Httputils.getApi().sigin(username, password, userPhone, userSex), new BaseObserver<LoginBean>(context()){
+        Httputils.retrofitUtils( Httputils.getApi().login(password,userPhone), new BaseObserver<LoginBean>(context()){
             @Override
             public void success(LoginBean loginBean) {
                 loginViews.CallBack(loginBean);

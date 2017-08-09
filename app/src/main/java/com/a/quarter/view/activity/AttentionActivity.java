@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +14,12 @@ import android.widget.Toast;
 
 import com.a.quarter.R;
 import com.a.quarter.model.base.BaseActivity;
+import com.a.quarter.model.bean.AttentionBean;
+import com.a.quarter.presenter.MyAttentionActivityPresenter;
+import com.a.quarter.view.adapter.AttentionActivity_recycalviewAdapter;
+import com.a.quarter.view.iview.MyAttentionView;
+
+import java.util.List;
 
 /**
  * 类的作用：
@@ -23,14 +31,17 @@ import com.a.quarter.model.base.BaseActivity;
  * on 2017/7/31 11
  */
 
-public class AttentionActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener {
+public class AttentionActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener, MyAttentionView {
 
     private TabLayout mTabLayout;
     private Toolbar toolbar;
+    private RecyclerView recyclerview;
+    private List<AttentionBean.UserBean> user;
+    private AttentionActivity_recycalviewAdapter adapter;
 
     @Override
     public Context context() {
-        return null;
+        return this;
     }
 
     @Override
@@ -40,21 +51,16 @@ public class AttentionActivity extends BaseActivity implements Toolbar.OnMenuIte
 
     @Override
     protected void initView() {
-        mTabLayout = (TabLayout) findViewById(R.id.attentionactivity_tab_layout);
+        recyclerview = (RecyclerView) findViewById(R.id.attention_recyclerview);
+     LinearLayoutManager layoutManager=new LinearLayoutManager(context());
+        recyclerview.setLayoutManager(layoutManager);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.daohang);
         toolbar.setTitle("我的关注");
         setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(this);
-        mTabLayout.addTab(mTabLayout.newTab().setText("1"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("2"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("3"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("4"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("5"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("6"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("7"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("8"));
-        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+        adapter = new AttentionActivity_recycalviewAdapter(context());
+          recyclerview.setAdapter(adapter);
     }
 
     @Override
@@ -62,10 +68,16 @@ public class AttentionActivity extends BaseActivity implements Toolbar.OnMenuIte
         return R.layout.attentionactivity;
     }
 
+//调用查询我关注的好友接口
     @Override
     protected void createPresenter() {
-
+        MyAttentionActivityPresenter myAttentionActivityPresenter = new MyAttentionActivityPresenter();
+        myAttentionActivityPresenter.setBaseview(this);
+        //String Userid为查询用户的id（唯一参数）这里先写死了
+        int id=2;
+        myAttentionActivityPresenter.getData(id);
     }
+
     //沉浸式
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -93,6 +105,7 @@ public class AttentionActivity extends BaseActivity implements Toolbar.OnMenuIte
         }
         return true;
     }
+
     //加载 res/menu/toolbar.xml 文件
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,5 +122,14 @@ public class AttentionActivity extends BaseActivity implements Toolbar.OnMenuIte
                 break;
         }
         return true;
+    }
+
+    //接口回调数据
+    @Override
+    public void callback(AttentionBean attentionBen) {
+
+        user = attentionBen.getUser();
+        adapter.setdata(user);
+        adapter.notifyDataSetChanged();
     }
 }

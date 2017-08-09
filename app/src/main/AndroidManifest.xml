@@ -2,54 +2,55 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.a.quarter">
-<uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-sdk tools:overrideLibrary="tv.danmaku.ijk.media.player_arm64,tv.danmaku.ijk.media.player_x86_64"/>
 
 
+<application
+    android:name=".system.MyAppliction"
+android:allowBackup="true"
+android:icon="@mipmap/ic_launcher"
+android:label="@string/app_name"
+android:roundIcon="@mipmap/ic_launcher_round"
+android:supportsRtl="true"
+android:theme="@style/AppTheme">
+<activity android:name=".view.activity.MainActivity"
+    android:launchMode="singleTask"
+    >
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:name=".system.MyAppliction"
-        android:theme="@style/AppTheme"
-        >
-        <activity android:name=".view.activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+<provider
+    android:authorities="com.gyq.cameraalbumtest.fileprovider"
+    android:name="android.support.v4.content.FileProvider"
+    android:exported="false"
+    android:grantUriPermissions="true">
+    <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/file_paths"/>
+</provider>
 
-        <provider
-            android:authorities="com.gyq.cameraalbumtest.fileprovider"
-            android:name="android.support.v4.content.FileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
-        </provider>
+<activity android:name=".view.activity.SatinActivity" />
+<activity android:name=".view.activity.EditActivity" />
+<activity android:name=".view.activity.LoginActivity" />
+<activity android:name=".view.activity.LoginActivity_OtherActivity" />
+<activity android:name=".view.activity.SignActivity"></activity>
+<activity android:name=".view.activity.DetailsAttentionVideoActivity" />
+<activity android:name=".view.activity.DetailsHotVideoActivity" />
+<activity android:name=".view.activity.FindPasswordActivity" />
+<activity android:name=".view.activity.SetActivity"/>
+<activity android:name=".view.activity.MyworksActivity" />
+<activity android:name=".view.activity.MessageActivity" />
+<activity android:name=".view.activity.FindFrandActivity" />
+    <activity android:name=".view.activity.AttentionActivity" />
+<activity android:name=".view.activity.SuccessActivity"/>
+</application>
 
-        <activity android:name=".view.activity.SatinActivity" />
-        <activity android:name=".view.activity.EditActivity" />
-        <activity android:name=".view.activity.LoginActivity" />
-        <activity android:name=".view.activity.LoginActivity_OtherActivity" />
-        <activity android:name=".view.activity.SignActivity"></activity>
-        <activity android:name=".view.activity.DetailsAttentionVideoActivity" />
-        <activity android:name=".view.activity.DetailsHotVideoActivity" />
-        <activity android:name=".view.activity.FindPasswordActivity" />
-        <activity android:name=".view.activity.SetActivity"/>
-        <activity android:name=".view.activity.MyworksActivity" />
-        <activity android:name=".view.activity.MessageActivity" />
-        <activity android:name=".view.activity.FindFrandActivity" />
-        <activity android:name=".view.activity.MyCollectActivity" />
-        <activity android:name=".view.activity.AttentionActivity" />
-        <activity android:name=".view.activity.SuccessActivity"/>
-    </application>
-
-</manifest>
+    </manifest>

@@ -30,6 +30,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
         this.mContext = context;
     }
 
+
     @Override
     public void onSubscribe(@NonNull Disposable d) {
 
@@ -48,6 +49,11 @@ public abstract class BaseObserver<T> implements Observer<T> {
     @Override
     public void onError(@NonNull Throwable e) {
 
+        if (e.toString().contains("500")){
+            Toast.makeText(mContext, "注册失败"+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+        LoadingDialogUtils.hideDialog();
         if (e instanceof ApiException) {
 //            Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
             ((ApiException)e).toastErr(mContext);

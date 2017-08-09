@@ -1,21 +1,27 @@
 package com.a.quarter.model.bean;
 
+import java.util.List;
+
 /**
- * 作者：李亚雷
- * 时间：2017/7/18
- * 类用途：
+ * 类的作用：
+ * <p>
+ * 作者： 宋莫凡
+ * <p>
  * 思路：
+ * <p>
+ * on 2017/8/2 11
  */
 
-public class LoginBean {
+public class AttentionBean {
+
 
     /**
      * code : 200
-     * user : {"userHead":"打开疯狂的","userId":6,"userName":"小明","userPassword":"111","userPhone":"13011196165","userSex":"男"}
+     * user : [{"userHead":"aaa","userId":0,"userName":"aa","userPhone":"123456","userSex":"男"}]
      */
 
     private String code;
-    private UserBean user;
+    private List<UserBean> user;
 
     public String getCode() {
         return code;
@@ -25,28 +31,26 @@ public class LoginBean {
         this.code = code;
     }
 
-    public UserBean getUser() {
+    public List<UserBean> getUser() {
         return user;
     }
 
-    public void setUser(UserBean user) {
+    public void setUser(List<UserBean> user) {
         this.user = user;
     }
 
     public static class UserBean {
         /**
-         * userHead : 打开疯狂的
-         * userId : 6
-         * userName : 小明
-         * userPassword : 111
-         * userPhone : 13011196165
+         * userHead : aaa
+         * userId : 0
+         * userName : aa
+         * userPhone : 123456
          * userSex : 男
          */
 
         private String userHead;
         private int userId;
         private String userName;
-        private String userPassword;
         private String userPhone;
         private String userSex;
 
@@ -74,14 +78,6 @@ public class LoginBean {
             this.userName = userName;
         }
 
-        public String getUserPassword() {
-            return userPassword;
-        }
-
-        public void setUserPassword(String userPassword) {
-            this.userPassword = userPassword;
-        }
-
         public String getUserPhone() {
             return userPhone;
         }
@@ -97,13 +93,5 @@ public class LoginBean {
         public void setUserSex(String userSex) {
             this.userSex = userSex;
         }
-    }
-
-    @Override
-    public String toString() {
-        return "LoginBean{" +
-                "code='" + code + '\'' +
-                ", user=" + user +
-                '}';
     }
 }

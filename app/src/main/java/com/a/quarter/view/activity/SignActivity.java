@@ -1,6 +1,7 @@
 package com.a.quarter.view.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.Toolbar;
@@ -59,7 +60,13 @@ public class SignActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         sex = (TextInputEditText) findViewById(R.id.sex);
         sigin = (Button) findViewById(R.id.siginactivity_button_sigin);
         sigin.setOnClickListener(this);
-
+        findViewById(R.id.singin_youke).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     //toolbar的子菜单点击事件
     @Override
@@ -96,19 +103,18 @@ public class SignActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     @Override
     protected void createPresenter() {
         siginPresenter = new SiginPresenter();
-        siginPresenter.attach(this);
+        siginPresenter.setBaseview(this);
 
     }
 
     @Override
     public Context context() {
-        return null;
+        return this;
     }
 //回调请求的返回结果
     @Override
     public void CallBack(SiginBean siginBean) {
-
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "wwwwwwww"+siginBean.getCode(), Toast.LENGTH_SHORT).show();
     }
 //点击注册按钮
     @Override
@@ -118,6 +124,6 @@ public class SignActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         String pwd = password.getText().toString();
         String sexs = sex.getText().toString();
         //点击调用注册接口
-        siginPresenter.getData(numb,name,pwd,sexs);
+        siginPresenter.getData(name,numb,sexs,pwd);
     }
 }

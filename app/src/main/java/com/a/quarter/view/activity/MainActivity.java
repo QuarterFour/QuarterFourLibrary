@@ -4,6 +4,7 @@ package com.a.quarter.view.activity;
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -52,12 +53,30 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     private DrawerLayout drawer_layout;
     private ActionMenuView mHomeAmv;
     private Intent intent;
+    private String username;
+    private String usersex;
+    private boolean islogin;
+    private SharedPreferences preferences;
 
     //初始化toolbar
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //登陆成功后返回用户名和性别
+        preferences = getSharedPreferences("condition", MODE_PRIVATE);
+        boolean islogin = preferences.getBoolean("islogin",false);
+        if (islogin) {
+            Intent intents = getIntent();
+            username = intents.getStringExtra("username");
+            usersex = intents.getStringExtra("usersex");
+        } else {
+            Toast.makeText(this, "您还没登陆，请去登陆", Toast.LENGTH_SHORT).show();
+            Intent intents=new Intent(MainActivity.this,LoginActivity_OtherActivity.class);
+            startActivity(intents);
+        }
+
+
 
         initCreat();
         deleteFragnebt();
@@ -65,7 +84,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void initCreat() {
-
         //-----toolbar----
         mToolBar = (Toolbar) findViewById(R.id.mToolBar);
         mToolBar.setTitle("");
@@ -105,9 +123,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         headerView.findViewById(R.id.icon_image).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                drawer_layout.closeDrawers();
                 Intent intent=new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
-               // Toast.makeText(MainActivity.this, "你是要登陆吗？", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -124,12 +143,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
                         //Toast.makeText(MainActivity.this, "点击了 ：我的关注", Toast.LENGTH_SHORT).show();
                         intent=new Intent(MainActivity.this,AttentionActivity.class);
                         startActivity(intent);
-                        break;
-                    case R.id.nav_collect:
-                       // Toast.makeText(MainActivity.this, "点击了 ：我的收藏", Toast.LENGTH_SHORT).show();
-                        intent=new Intent(MainActivity.this,MyCollectActivity.class);
-                        startActivity(intent);
-
                         break;
                     case R.id.nav_seek:
                        // Toast.makeText(MainActivity.this, "点击了 ：搜索好友", Toast.LENGTH_SHORT).show();
@@ -181,7 +194,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     //获得presenter
     @Override
     protected void createPresenter() {
-        mPresenter = new MainPresenter();
+
     }
 
     @Override
@@ -217,20 +230,20 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.compile:
-
                 Intent intent = new Intent(MainActivity.this, EditActivity.class);
                 startActivity(intent);
                 break;
         }
         return true;
     }
+
+    //加载 res/menu/toolbar.xml 文件
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //加载 res/menu/toolbar.xml 文件
         getMenuInflater().inflate(R.menu.toolbar, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+//沉浸式
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);

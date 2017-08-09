@@ -44,7 +44,7 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public Context context() {
-        return null;
+        return this;
     }
 
     @Override
