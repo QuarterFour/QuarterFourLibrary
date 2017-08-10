@@ -100,7 +100,7 @@ public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
                         //进度条显示 加载数据
 //                        bar.setVisibility(View.VISIBLE);
-
+    
                         //加载数据
                         //省略
 
