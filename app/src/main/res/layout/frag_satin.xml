@@ -7,83 +7,132 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/headimage_lv_sa"
-            android:src="@mipmap/ic_launcher"
-            />
+
+        <!--头像+名字+日期-->
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_weight="6"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/headimage_lv_sa"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:src="@drawable/head" />
+
+            <!--名字和时间-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/nametext_lv_sa"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="月下独酌" />
+
+                <TextView
+                    android:textSize="12dp"
+                    android:id="@+id/timetext_lv_sa"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical"
+                    android:text="2017年8月3日19时2分4秒" />
+
+
+            </LinearLayout>
+            <!--android:padding="10dp"-->
+            <!--以下三个imageview都是 喜欢，收藏和转发  在这隐藏了-->
+
+        </LinearLayout>
+
+        <!--评论、转发、点赞-->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_weight="8"
+            android:orientation="horizontal">
 
+            <!--评论-->
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="name"
-                android:id="@+id/nametext_lv_sa"
+                android:visibility="gone"
+                android:id="@+id/commentnum"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/commenn"
+                android:gravity="center"
+                android:padding="1dp"
+                android:text="10" />
+            <!--转发-->
+            <TextView
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="10"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:padding="1dp"
+                android:id="@+id/forwardnum"
+                android:drawableTop="@mipmap/forward"
+                />
+            <!--点赞-->
+            <TextView
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="10"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:padding="1dp"
+                android:id="@+id/praisenum"
+                android:drawableTop="@mipmap/like"
                 />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TIME"
-                android:id="@+id/timetext_lv_sa"
-                />
 
 
         </LinearLayout>
 
         <ImageView
-            android:visibility="gone"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/forwardimage_lv_sa"
-            android:src="@mipmap/forward"
-            />
-        <ImageView
-            android:visibility="gone"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/likeimage_lv_sa"
-            android:src="@mipmap/like"
-            />
-        <ImageView
-            android:visibility="gone"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/commentimage_lv_sa"
-            android:src="@mipmap/comment"
-            />
-
-
-
-        <ImageView
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/editimage_lv_sa"
-            android:src="@mipmap/edit"
-            />
-
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:padding="1dp"
+            android:src="@drawable/container" />
 
     </LinearLayout>
 
+
+    <!--内容-->
     <TextView
+        android:padding="10dp"
+        android:id="@+id/text_lv_sa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/text_lv_sa"
-        android:text="content"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="2222222" />
 
+
+    <View
+        android:background="#BBBBFF"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="1dp"/>
 
 </LinearLayout>
