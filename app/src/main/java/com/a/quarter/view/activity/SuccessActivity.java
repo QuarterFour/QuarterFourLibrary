@@ -170,7 +170,7 @@ public class SuccessActivity extends BaseActivity<SuccessPresenter> implements V
                         .setCallback(umShareListener)//回调监听器
                         .share();
                 break;
-  
+     
             //qq空间
             case R.id.qqkl:
                 new ShareAction(SuccessActivity.this)
