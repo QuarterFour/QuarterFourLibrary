@@ -3,54 +3,106 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.a.quarter">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <!--分享所需权限-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-sdk tools:overrideLibrary="tv.danmaku.ijk.media.player_arm64,tv.danmaku.ijk.media.player_x86_64"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
 
-<application
-    android:name=".system.MyAppliction"
-android:allowBackup="true"
-android:icon="@mipmap/ic_launcher"
-android:label="@string/app_name"
-android:roundIcon="@mipmap/ic_launcher_round"
-android:supportsRtl="true"
-android:theme="@style/AppTheme">
-<activity android:name=".view.activity.MainActivity"
-    android:launchMode="singleTask"
-    >
-    <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+    <uses-sdk tools:overrideLibrary="tv.danmaku.ijk.media.player_arm64,tv.danmaku.ijk.media.player_x86_64" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-    </intent-filter>
-</activity>
 
-<provider
-    android:authorities="com.gyq.cameraalbumtest.fileprovider"
-    android:name="android.support.v4.content.FileProvider"
-    android:exported="false"
-    android:grantUriPermissions="true">
-    <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/file_paths"/>
-</provider>
+    <application
+        android:name=".system.MyAppliction"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".view.activity.MainActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<activity android:name=".view.activity.SatinActivity" />
-<activity android:name=".view.activity.EditActivity" />
-<activity android:name=".view.activity.LoginActivity" />
-<activity android:name=".view.activity.LoginActivity_OtherActivity" />
-<activity android:name=".view.activity.SignActivity"></activity>
-<activity android:name=".view.activity.DetailsAttentionVideoActivity" />
-<activity android:name=".view.activity.DetailsHotVideoActivity" />
-<activity android:name=".view.activity.FindPasswordActivity" />
-<activity android:name=".view.activity.SetActivity"/>
-<activity android:name=".view.activity.MyworksActivity" />
-<activity android:name=".view.activity.MessageActivity" />
-<activity android:name=".view.activity.FindFrandActivity" />
-    <activity android:name=".view.activity.AttentionActivity" />
-<activity android:name=".view.activity.SuccessActivity"/>
-</application>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-    </manifest>
+        <!--============================================-->
+        <!--微信分享的权限需要-->
+        <!--<activity-->
+            <!--android:name=".wxapi.WXEntryActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
+            <!--android:exported="true"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+        <!--&lt;!&ndash;微信分享的权限需要&ndash;&gt;-->
+
+
+        <!--&lt;!&ndash;qq完整版&ndash;&gt;-->
+        <!--<activity-->
+            <!--android:name="com.tencent.tauth.AuthActivity"-->
+            <!--android:launchMode="singleTask"-->
+            <!--android:noHistory="true" >-->
+
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.VIEW" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<category android:name="android.intent.category.BROWSABLE" />-->
+                <!--<data android:scheme="tencent1106163122" />-->
+            <!--</intent-filter>-->
+
+        <!--</activity>-->
+
+        <!--android:name="com.tencent.connect.common.AssistActivity"-->
+        <!--<activity-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
+            <!--android:configChanges="orientation|keyboardHidden|screenSize"/>-->
+        <!--qq精简版-->
+
+        <!--添加友盟appkey-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="597f156b6e27a4177f001573" >
+        </meta-data>
+
+
+
+
+        <!--============================================-->
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.gyq.cameraalbumtest.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".view.activity.SatinActivity" />
+        <activity android:name=".view.activity.EditActivity" />
+        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.LoginActivity_OtherActivity" />
+        <activity android:name=".view.activity.SignActivity"></activity>
+        <activity android:name=".view.activity.DetailsAttentionVideoActivity" />
+        <activity android:name=".view.activity.DetailsHotVideoActivity" />
+        <activity android:name=".view.activity.FindPasswordActivity" />
+        <activity android:name=".view.activity.SetActivity" />
+        <activity android:name=".view.activity.MyworksActivity" />
+        <activity android:name=".view.activity.MessageActivity" />
+        <activity android:name=".view.activity.FindFrandActivity" />
+        <activity android:name=".view.activity.AttentionActivity" />
+        <activity android:name=".view.activity.SuccessActivity" />
+    </application>
+
+</manifest>
