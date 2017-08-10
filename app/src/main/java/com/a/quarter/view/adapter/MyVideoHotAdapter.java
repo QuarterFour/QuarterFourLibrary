@@ -60,18 +60,9 @@ public class MyVideoHotAdapter extends RecyclerView.Adapter<MyVideoHotAdapter.My
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-//             Uri uri= Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/123.mp4");
-//            holder.mVideoView.setVideoURI(uri);
-        holder.mNameTextView.setText(media.get(position).getMediaName() );
+
+//        holder.mNameTextView.setText(media.get(position).getMediaName() );
         Glide.with(context).load(media.get(position).getMediaPictureSrc()).into(holder.mImageView);
-//        holder.mImageView.setImageURI(media.get(position).getMediaDescription());
-        //通过getVideoThumbnail方法取得视频中的第一帧图片，该图片是一个bitmap对象
-//        Bitmap bitmap=getVideoThumbnail("");
-//将bitmap对象转换成drawable对象
-//        Drawable drawable=new BitmapDrawable(bitmap);
-//将drawable对象设置给视频播放窗口surfaceView控件作为背景图片
-//        mVideoView.setBackgroundDrawable(drawable);
-//            holder.mVideoView.setBackgroundDrawable(drawable);
 
         if (mOnItemClickLitener != null)
         {
@@ -109,50 +100,16 @@ public class MyVideoHotAdapter extends RecyclerView.Adapter<MyVideoHotAdapter.My
 
 //        private final IjkVideoView mVideoView;
 //        private final AndroidMediaController mMediaController;
-        private final TextView mNameTextView;
+//        private final TextView mNameTextView;
         private final ImageView mImageView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            mNameTextView = (TextView) itemView.findViewById(R.id.Hot_NameTextView);
+//            mNameTextView = (TextView) itemView.findViewById(R.id.Hot_NameTextView);
             mImageView = (ImageView) itemView.findViewById(R.id.Hot_MapImageView);
-//            IjkMediaPlayer.loadLibrariesOnce(null);
-//            IjkMediaPlayer.native_profileBegin("libijkplayer.so");
-//            mMediaController = new AndroidMediaController(context, false);
-            //mMediaController.setSupportActionBar(actionBar);
-//            mVideoView = (IjkVideoView) itemView.findViewById(R.id.Video_ijkPlay);
-//            mVideoView.setMediaController(mMediaController);
+
 
         }
     }
-//    public Bitmap getVideoThumbnail(String url) {
-//        Bitmap bitmap = null;
-////MediaMetadataRetriever 是android中定义好的一个类，提供了统一
-////的接口，用于从输入的媒体文件中取得帧和元数据；
-//        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
-//        try {
-//            //（）根据文件路径获取缩略图
-////retriever.setDataSource(filePath);
-//            retriever.setDataSource(url, new HashMap());
-//            //获得第一帧图片
-//            bitmap = retriever.getFrameAtTime();
-//        }
-//        catch(IllegalArgumentException e) {
-//            e.printStackTrace();
-//        }
-//        catch (RuntimeException e) {
-//            e.printStackTrace();
-//        }
-//        finally {
-//            try {
-//                retriever.release();
-//            }
-//            catch (RuntimeException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        Log.v("bitmap", "bitmap="+bitmap);
-//        return bitmap;
-//    }
 
 }

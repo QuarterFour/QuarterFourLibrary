@@ -4,6 +4,7 @@ import com.a.quarter.model.base.BaseBean;
 import com.a.quarter.model.base.BaseObserver;
 import com.a.quarter.model.base.BasePresenter;
 import com.a.quarter.model.bean.LoginBean;
+import com.a.quarter.model.bean.SiginBean;
 import com.a.quarter.model.utils.Httputils;
 import com.a.quarter.system.Contant;
 import com.a.quarter.view.iview.MainView;
@@ -19,18 +20,13 @@ import io.reactivex.Observable;
 
 public class MainPresenter extends BasePresenter<MainView> {
 
-
-
-
     public  void getData(String username,String password,String userPhone,String userSex){
 
-       // Observable<BaseBean<LoginBean>> login = Httputils.getApi().Login(username);
-        Httputils.retrofitUtils((Observable<LoginBean>) Httputils.getApi().sigin(username,password,userPhone,userSex),new BaseObserver<LoginBean>(context()) {
+        Httputils.retrofitUtils(Httputils.getApi().sigin(username,password,userPhone,userSex),new BaseObserver<SiginBean>(context()) {
+
             @Override
-            public void success(LoginBean loginBean) {
-
-                getBaseview().CallBack(loginBean);
-
+            public void success(SiginBean siginBean) {
+                getBaseview().CallBack(siginBean);
             }
         });
 

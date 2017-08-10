@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.a.quarter.R;
 import com.a.quarter.model.base.BaseActivity;
 import com.a.quarter.model.bean.LoginBean;
+import com.a.quarter.model.bean.SiginBean;
 import com.a.quarter.presenter.MainPresenter;
 import com.a.quarter.ui.LoadingDialog;
 import com.a.quarter.ui.Titanic;
@@ -202,10 +203,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         return this;
     }
 
-    @Override
-    public void CallBack(LoginBean loginBean) {
 
-    }
 
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
@@ -257,5 +255,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
+    }
+
+    @Override
+    public void CallBack(SiginBean siginBeann) {
+
     }
 }
