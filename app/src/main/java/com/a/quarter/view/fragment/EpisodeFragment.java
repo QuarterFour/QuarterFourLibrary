@@ -1,26 +1,25 @@
 package com.a.quarter.view.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.a.quarter.R;
-import com.a.quarter.view.adapter.MySatinListVAdapter;
-import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
-import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
+import com.a.quarter.model.bean.DisplayBean;
+import com.a.quarter.presenter.SatinPresenter;
+import com.a.quarter.view.adapter.MySatinRecycleAdapter;
+import com.a.quarter.view.iview.SatinView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -33,19 +32,15 @@ import java.util.ArrayList;
  * on 2017/7/21 09
  */
 
-public class EpisodeFragment extends Fragment implements View.OnClickListener{
+public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener,SatinView {
 
-    private RadioGroup radio_group;
-    private RadioButton satin;
-    private RadioButton odd_photos;
-    private LinearLayout lin;
-    private ArrayList<Fragment> fragments;
-    private Episode_SatinFragment episode_satinFragment;
-    private TabLayout satin_tab;
-    private MySatinListVAdapter satinListVAdapter;
-    private ListView list_view;
+    private MySatinRecycleAdapter satinRecycleAdapter;
     private ArrayList<String> arr;
     private SwipeRefreshLayout swip;
+    private RecyclerView recycle;
+    private SwipeRefreshLayout swip_refresh;
+    private LinearLayoutManager linearLayoutManager;
+    private TextView satin_tab;
 
     @Nullable
     @Override
@@ -59,108 +54,134 @@ public class EpisodeFragment extends Fragment implements View.OnClickListener{
         super.onViewCreated(view, savedInstanceState);
 
 
+        satin_tab = (TextView) view.findViewById(R.id.satin);
 
-        TextView satin_tab = (TextView) view.findViewById(R.id.satin);
-        list_view = (ListView) view.findViewById(R.id.list_view);
-
-        final PullToRefreshLayout pullToRefreshLayout = (PullToRefreshLayout) view.findViewById(R.id.pull_to_re);
-
-
-        pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
-            @Override
-            public void refresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // 结束刷新
-                        pullToRefreshLayout.finishRefresh();
-                    }
-                }, 2000);
-            }
-
-            @Override
-            public void loadMore() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // 结束加载更多
-                        pullToRefreshLayout.finishLoadMore();
-                    }
-                }, 2000);
-            }
-        });
-
-
-
-
-
-
-
-
-
-//        swip = (SwipeRefreshLayout) view.findViewById(R.id.swip);
-//
-//        swip.setOnRefreshListener(this);
-//        //设置下拉刷新进度条的颜色
-//        swip.setColorSchemeResources(R.color.blue,R.color.red,R.color.purple);
-//        //设置可加载更多
-////        swip.setOn
+        swip_refresh = (SwipeRefreshLayout) view.findViewById(R.id.swip_refresh);
+        recycle = (RecyclerView) view.findViewById(R.id.recycle);
 
         initData();
     }
 
     private void initData() {
 
-
-        satinListVAdapter = new MySatinListVAdapter(getActivity());
+        SatinPresenter satinPresenter = new SatinPresenter();
+        satinPresenter.setBaseview(this);
+        satinPresenter.getDisplayData();
 
         arr = new ArrayList<>();
 
-        list_view.setAdapter(satinListVAdapter);
+
+        satinRecycleAdapter = new MySatinRecycleAdapter(getActivity());
+
+        recycle.setAdapter(satinRecycleAdapter);
+
+        //线性布局
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+
+        recycle.setLayoutManager(linearLayoutManager);
+
+        swip_refresh.setOnRefreshListener(this);
+
+        //上拉加载更多
+        recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+
+                if (dy > 0) {
+                    //取决于你的瀑布流(recyclerView)用的什么样的布局
+//                    int last = gridmanager.findLastVisibleItemPosition();
+                    int last_grid = linearLayoutManager.findLastVisibleItemPosition();
+
+                    if (last_grid + 1 == satinRecycleAdapter.getItemCount()) {
+
+
+                        //进度条显示 加载数据
+//                        bar.setVisibility(View.VISIBLE);
+
+                        //加载数据
+                        //省略
+
+                        new Thread(){
+                            @Override
+                            public void run() {
+                                super.run();
+
+                                try {
+                                    sleep(2000);
+//                                    runOnUiThread(new Runnable() {
+//                                        @Override
+//                                        public void run() {
+//                                            bar.setVisibility(View.GONE);
+//                                        }
+//                                    });
+
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+
+                                }
+
+                            }
+                        }.start();
+
+
+
+
+                    }
+                }
+
+
+
+            }
+        });
+
 
 
     }
 
+
+    /**
+     * 下拉刷新
+     */
+    @Override
+    public void onRefresh() {
+
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+////                ArrayList<String> arrayList = new ArrayList<>();
+////                for (int i = 0; i < 10; i++) {
+////                    int index = i+1;
+////                    arrayList.add("")
+////
+////                }
+//                swip_refresh.setRefreshing(false);
+//                Toast.makeText(getActivity(), "更新了五条数据...", Toast.LENGTH_SHORT).show();
+//            }
+//        },3000);
+
+
+
+
+
+
+
+    }
 
 
     @Override
-    public void onClick(View v) {
+    public Context context() {
+        return getActivity();
+    }
 
-        switch (v.getId()){
+    @Override
+    public void getDisplaySatin(DisplayBean displayBean) {
 
-
-
-        }
-
+        List<DisplayBean.ResourceBean> resource = displayBean.getResource();
+        satinRecycleAdapter.setCallBackDisplaySatin(resource);
 
 
     }
-
-//    @Override
-//    public void onRefresh() {
-//
-//        Toast.makeText(getActivity(), "刷新数据了>_<", Toast.LENGTH_SHORT).show();
-//
-//
-//        new Thread(){
-//            @Override
-//            public void run() {
-//                super.run();
-//                try {
-//                    sleep(2000);
-//                    getActivity().runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            swip.setRefreshing(false);
-//                        }
-//                    });
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        }.start();
-//
-//
-//    }
 }

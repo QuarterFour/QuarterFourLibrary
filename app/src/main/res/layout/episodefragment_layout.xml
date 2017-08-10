@@ -15,22 +15,22 @@
         android:text="段子"
         />
 
-    <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/pull_to_re"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <!-- 内容控件 有且只能有一个 -->
-        <ListView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swip_refresh"
+        >
+
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/list_view"
+            android:id="@+id/recycle"
             >
-        </ListView>
 
+        </android.support.v7.widget.RecyclerView>
 
-    </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 
 
