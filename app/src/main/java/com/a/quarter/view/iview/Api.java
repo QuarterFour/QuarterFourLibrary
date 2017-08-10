@@ -1,11 +1,13 @@
 package com.a.quarter.view.iview;
 
 import com.a.quarter.model.bean.AttentionBean;
+import com.a.quarter.model.bean.DisplayBean;
 import com.a.quarter.model.bean.HotBean;
 import com.a.quarter.model.bean.HotVideoBean;
 import com.a.quarter.model.bean.LoginBean;
 import com.a.quarter.model.bean.MyworksActivity_LocaBean;
 import com.a.quarter.model.bean.SiginBean;
+import com.a.quarter.model.bean.User_PublishBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -64,7 +66,18 @@ public interface Api {
     @GET("quarter/user/selectUserAll")
     Observable<MyworksActivity_LocaBean> Mywarks(@Query("id") int id);
 
+    //段子显示页面的接口
+    @GET("quarter/user/selectpiccha")
+    Observable<DisplayBean> getData();
 
+
+    //用户发表段子
+    @FormUrlEncoded
+    @POST("quarter/picture/picchaUpload")
+    Observable<User_PublishBean> getCode(@Field("description") String description,
+                                         @Field("dictionaryValue") int dictionaryValue,
+                                         @Field("userId") int userId,
+                                         @Field("content") String content);
 
 
 
