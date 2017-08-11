@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.a.quarter.R;
 import com.a.quarter.model.bean.DisplayBean;
@@ -18,29 +19,27 @@ import com.a.quarter.presenter.SatinPresenter;
 import com.a.quarter.view.adapter.MySatinRecycleAdapter;
 import com.a.quarter.view.iview.SatinView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * 类的作用：段子的
+ * 类的作用：
  * <p>
  * 作者： 宋莫凡
  * <p>
- * 思路：
- * <p>
- * on 2017/7/21 09
+ * 思路：段子里面的作者头像还没有弄好；还有内容还没有显示图片；上拉加载，
  */
 
-public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener,SatinView {
+public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, SatinView {
 
     private MySatinRecycleAdapter satinRecycleAdapter;
-    private ArrayList<String> arr;
     private SwipeRefreshLayout swip;
     private RecyclerView recycle;
     private SwipeRefreshLayout swip_refresh;
     private LinearLayoutManager linearLayoutManager;
     private TextView satin_tab;
+    private SatinPresenter satinPresenter;
+    private boolean isrefrsh = false;
 
     @Nullable
     @Override
@@ -58,29 +57,21 @@ public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
         swip_refresh = (SwipeRefreshLayout) view.findViewById(R.id.swip_refresh);
         recycle = (RecyclerView) view.findViewById(R.id.recycle);
-
+        //线性布局
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        recycle.setLayoutManager(linearLayoutManager);
+        satinRecycleAdapter = new MySatinRecycleAdapter(getActivity());
+        recycle.setAdapter(satinRecycleAdapter);
+        swip_refresh.setOnRefreshListener(this);
         initData();
     }
 
     private void initData() {
 
-        SatinPresenter satinPresenter = new SatinPresenter();
+        satinPresenter = new SatinPresenter();
         satinPresenter.setBaseview(this);
         satinPresenter.getDisplayData();
 
-        arr = new ArrayList<>();
-
-
-        satinRecycleAdapter = new MySatinRecycleAdapter(getActivity());
-
-        recycle.setAdapter(satinRecycleAdapter);
-
-        //线性布局
-        linearLayoutManager = new LinearLayoutManager(getActivity());
-
-        recycle.setLayoutManager(linearLayoutManager);
-
-        swip_refresh.setOnRefreshListener(this);
 
         //上拉加载更多
         recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -89,84 +80,33 @@ public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRe
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-
                 if (dy > 0) {
                     //取决于你的瀑布流(recyclerView)用的什么样的布局
-//                    int last = gridmanager.findLastVisibleItemPosition();
                     int last_grid = linearLayoutManager.findLastVisibleItemPosition();
-
                     if (last_grid + 1 == satinRecycleAdapter.getItemCount()) {
-
-
-                        //进度条显示 加载数据
-//                        bar.setVisibility(View.VISIBLE);
-
-                        //加载数据
-                        //省略
-
-                        new Thread(){
-                            @Override
-                            public void run() {
-                                super.run();
-
-                                try {
-                                    sleep(2000);
-//                                    runOnUiThread(new Runnable() {
-//                                        @Override
-//                                        public void run() {
-//                                            bar.setVisibility(View.GONE);
-//                                        }
-//                                    });
-
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-
-                                }
-
-                            }
-                        }.start();
-
-
 
 
                     }
                 }
 
 
-
             }
         });
-
 
 
     }
 
 
     /**
-     * 下拉刷新
+     * 下拉刷新，
      */
     @Override
     public void onRefresh() {
 
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-////                ArrayList<String> arrayList = new ArrayList<>();
-////                for (int i = 0; i < 10; i++) {
-////                    int index = i+1;
-////                    arrayList.add("")
-////
-////                }
-//                swip_refresh.setRefreshing(false);
-//                Toast.makeText(getActivity(), "更新了五条数据...", Toast.LENGTH_SHORT).show();
-//            }
-//        },3000);
 
+        satinPresenter.getDisplayData();
 
-
-
-
-
+        isrefrsh = true;
 
     }
 
@@ -182,6 +122,14 @@ public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRe
         List<DisplayBean.ResourceBean> resource = displayBean.getResource();
         satinRecycleAdapter.setCallBackDisplaySatin(resource);
 
+
+        if (isrefrsh) {
+            swip_refresh.setRefreshing(false);
+            int size = resource.size();
+
+            Toast.makeText(getActivity(), "刷新成功..."+size, Toast.LENGTH_SHORT).show();
+            isrefrsh=false;
+        }
 
     }
 }

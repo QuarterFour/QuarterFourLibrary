@@ -66,19 +66,17 @@
 
             <!--评论-->
             <TextView
-                android:visibility="gone"
                 android:id="@+id/commentnum"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/commenn"
+                android:drawableTop="@drawable/comment"
                 android:gravity="center"
                 android:padding="1dp"
                 android:text="10" />
             <!--转发-->
             <TextView
-                android:visibility="gone"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="10"
@@ -87,11 +85,10 @@
                 android:layout_weight="1"
                 android:padding="1dp"
                 android:id="@+id/forwardnum"
-                android:drawableTop="@mipmap/forward"
+                android:drawableTop="@drawable/fwd"
                 />
             <!--点赞-->
             <TextView
-                android:visibility="gone"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="10"
@@ -100,9 +97,9 @@
                 android:layout_weight="1"
                 android:padding="1dp"
                 android:id="@+id/praisenum"
-                android:drawableTop="@mipmap/like"
-                />
+                android:drawableTop="@drawable/praise_af"
 
+                />
 
 
         </LinearLayout>
@@ -114,8 +111,16 @@
             android:layout_alignParentRight="true"
             android:padding="1dp"
             android:src="@drawable/container" />
-
+        <!--@drawable/container-->
     </LinearLayout>
+
+    <!--内容的图片-->
+    <ImageView
+        android:padding="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/image_content"
+        />
 
 
     <!--内容-->

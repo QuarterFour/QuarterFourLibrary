@@ -16,7 +16,7 @@
         android:id="@+id/ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="分享成功，快分享给好友捧场吧！"
+        android:text="发表成功，快分享给好友捧场吧！"
         android:gravity="center"
         android:layout_marginTop="20dp"
         />

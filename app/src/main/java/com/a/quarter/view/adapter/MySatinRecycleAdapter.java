@@ -1,6 +1,7 @@
 package com.a.quarter.view.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.a.quarter.R;
 import com.a.quarter.model.bean.DisplayBean;
@@ -51,11 +53,14 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
         return myViewHoder;
     }
 
+    /**
+     * 因为后台没有用户头像，所以先注释掉，用默认的。
+     */
     @Override
     public void onBindViewHolder(final MyViewHoder holder, final int position) {
 
         //头像
-        Glide.with(context).load(list.get(position).getUser().getUserHead()).into(holder.head_image);
+//        Glide.with(context).load(list.get(position).getUser().getUserHead()).into(holder.head_image);
         //名字
         holder.name_text.setText(list.get(position).getUser().getUserName());
         //时间
@@ -68,6 +73,8 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
         holder.praisenum.setText(list.get(position).getNiceNum()+"");
         //内容
         holder.content_text.setText(list.get(position).getContent()+"");
+        //图片_内容
+        Glide.with(context).load(list.get(position).getSrc()).into(holder.image_content);
 
         //喜欢、转发和收藏的图片
         holder.edit_image.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +104,46 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
         });
 
         showShareText(holder,list.get(position).isshow());
+
+
+        //数量
+//        commentnum
+//        forwardnum
+//        praisenum
+
+        //评论
+        holder.commentnum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "你要评论吗？没问题，但现在还不可以哦！", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //转发
+        holder.forwardnum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "你要转发吗？没问题，但现在还不可以哦！", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        //点赞---点击变红
+        holder.praisenum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Drawable drawable1 = context.getResources().getDrawable(R.drawable.praise_ok);
+                drawable1.setBounds(0,0,drawable1.getMinimumWidth(),drawable1.getMinimumHeight());
+
+                holder.praisenum.setCompoundDrawables(null,drawable1,null,null);
+
+            }
+        });
+
+
+
+
     }
 
     //改变集合里面的状态
@@ -166,13 +213,16 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
         edit_image.startAnimation(animationSet);
     }
 
+
     public void setCallBackDisplaySatin(List<DisplayBean.ResourceBean> resource) {
 
         if (resource != null) {
+            this.list.clear();
             this.list = (ArrayList<DisplayBean.ResourceBean>) resource;
         }
         notifyDataSetChanged();
     }
+
 
 
     /**
@@ -188,6 +238,7 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
         private final TextView commentnum;
         private final TextView forwardnum;
         private final TextView praisenum;
+        private final ImageView image_content;
 
 
         public MyViewHoder(View itemView) {
@@ -196,10 +247,11 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
             head_image = (ImageView) itemView.findViewById(R.id.headimage_lv_sa);
             name_text = (TextView) itemView.findViewById(R.id.nametext_lv_sa);
             time_text = (TextView) itemView.findViewById(R.id.timetext_lv_sa);
-            content_text = (TextView) itemView.findViewById(R.id.text_lv_sa);
             edit_image = (ImageView) itemView.findViewById(R.id.editimage_lv_sa);
+            content_text = (TextView) itemView.findViewById(R.id.text_lv_sa);
+            image_content = (ImageView) itemView.findViewById(R.id.image_content);
 
-
+            //有动画的三个控件
             commentnum = (TextView) itemView.findViewById(R.id.commentnum);
             forwardnum = (TextView) itemView.findViewById(R.id.forwardnum);
             praisenum = (TextView) itemView.findViewById(R.id.praisenum);
