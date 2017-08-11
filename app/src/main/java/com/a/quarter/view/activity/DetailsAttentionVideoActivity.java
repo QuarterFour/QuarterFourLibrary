@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import com.a.quarter.R;
-import media.AndroidMediaController;
-import media.IjkVideoView;
+
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
@@ -20,8 +19,8 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 public class DetailsAttentionVideoActivity extends Activity {
 
-    private IjkVideoView mVideoView;
-    private AndroidMediaController mMediaController;
+//    private IjkVideoView mVideoView;
+//    private AndroidMediaController mMediaController;
     private boolean mBackPressed;
 
     @Override
@@ -33,25 +32,25 @@ public class DetailsAttentionVideoActivity extends Activity {
     }
 
     private void initEvent() {
-        mVideoView.setOnPreparedListener(new IMediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(IMediaPlayer iMediaPlayer) {
-
-                mVideoView.start();
-            }
-        });
+//        mVideoView.setOnPreparedListener(new IMediaPlayer.OnPreparedListener() {
+//            @Override
+//            public void onPrepared(IMediaPlayer iMediaPlayer) {
+//
+//                mVideoView.start();
+//            }
+//        });
 
     }
 
     private void initView() {
-        IjkMediaPlayer.loadLibrariesOnce(null);
-        IjkMediaPlayer.native_profileBegin("libijkplayer.so");
-        mMediaController = new AndroidMediaController(this, false);
-
-        mVideoView = (IjkVideoView) findViewById(R.id.DetailsAttenton_ijkPlay);
-        mVideoView.setMediaController(mMediaController);
-        Uri uri= Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/123.mp4");
-        mVideoView.setVideoURI(uri);
+//        IjkMediaPlayer.loadLibrariesOnce(null);
+//        IjkMediaPlayer.native_profileBegin("libijkplayer.so");
+//        mMediaController = new AndroidMediaController(this, false);
+//
+//        mVideoView = (IjkVideoView) findViewById(R.id.DetailsAttenton_ijkPlay);
+//        mVideoView.setMediaController(mMediaController);
+//        Uri uri= Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/123.mp4");
+//        mVideoView.setVideoURI(uri);
 
     }
 
@@ -64,14 +63,14 @@ public class DetailsAttentionVideoActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (mBackPressed || !mVideoView.isBackgroundPlayEnabled()) {
-            mVideoView.stopPlayback();
-            mVideoView.release(true);
-            mVideoView.stopBackgroundPlay();
-        } else {
-            mVideoView.enterBackground();
-        }
-        IjkMediaPlayer.native_profileEnd();
+//        if (mBackPressed || !mVideoView.isBackgroundPlayEnabled()) {
+//            mVideoView.stopPlayback();
+//            mVideoView.release(true);
+//            mVideoView.stopBackgroundPlay();
+//        } else {
+//            mVideoView.enterBackground();
+//        }
+//        IjkMediaPlayer.native_profileEnd();
 
     }
 }

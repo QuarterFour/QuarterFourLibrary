@@ -7,42 +7,42 @@
     <RelativeLayout
         android:id="@+id/topLinerar"
         android:layout_width="match_parent"
-        android:layout_height="66dp"
+        android:layout_height="55dp"
         android:orientation="horizontal">
 
 
         <CheckBox
             android:button="@null"
-            android:background="@drawable/detailback"
+            android:background="@mipmap/hot_back"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/Detail_Back"/>
 
         <CheckBox
             android:button="@null"
             android:checked="false"
-            android:background="@drawable/like"
+            android:background="@mipmap/hot_like"
             android:layout_centerVertical="true"
             android:layout_alignLeft="@id/Detail_Back"
             android:layout_marginLeft="50dp"
             android:layout_gravity="center"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/Detail_like"/>
 
         <CheckBox
             android:button="@null"
             android:checked="false"
-            android:background="@drawable/unlike"
+            android:background="@mipmap/hot_unlike"
             android:layout_alignLeft="@id/Detail_like"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50dp"
             android:layout_gravity="center"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/Detail_unlike"/>
 
         <CheckBox
@@ -52,9 +52,9 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="50dp"
             android:layout_gravity="center"
-            android:background="@drawable/reship"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:background="@mipmap/hot_reship"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/Detail_down"/>
 
         <CheckBox
@@ -64,14 +64,12 @@
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
             android:button="@null"
-            android:background="@drawable/like"
+            android:background="@mipmap/hot_like"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/Detail_photo"/>
     </RelativeLayout>
-    
-    
-    
+
 <LinearLayout
     android:layout_below="@+id/topLinerar"
     android:layout_width="match_parent"
@@ -79,18 +77,10 @@
     android:orientation="vertical">
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <media.IjkVideoView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:id="@+id/DetailsHot_ijkPlay"/>
-
-    </FrameLayout>
-
-
+<com.a.quarter.view.view.ItemIjkPlayerView
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:id="@+id/DetailHot_ijkPlay"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -133,35 +123,5 @@
     </RelativeLayout>
 
 </LinearLayout>
-
-<!--<LinearLayout-->
-    <!--android:layout_marginBottom="10dp"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:id="@+id/Detail_writeLinear"-->
-    <!--android:layout_height="30dp"-->
-    <!--android:orientation="horizontal">-->
-
-    <!--<ImageView-->
-        <!--android:layout_gravity="center_vertical"-->
-        <!--android:layout_width="25dp"-->
-        <!--android:layout_height="25dp"-->
-        <!--android:src="@drawable/write"/>-->
-
-    <!--<TextView-->
-        <!--android:layout_marginLeft="20dp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_gravity="center_vertical"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/Details_writeTextView"-->
-        <!--android:textSize="20sp"-->
-        <!--android:text="写评论"/>-->
-
-
-<!--</LinearLayout>-->
-
-
-
-
 
 </RelativeLayout>

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import java.util.ArrayList;
 
 /**
@@ -24,6 +26,7 @@ public class MyAppliction extends Application {
 
         activities = new ArrayList<>();
         mContext=this;
+        Fresco.initialize(this);
     }
     public static synchronized MyAppliction getInstance() {
 
