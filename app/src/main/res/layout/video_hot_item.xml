@@ -9,22 +9,16 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:id="@+id/Hot_NameTextView"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center"-->
+        <!--android:id="@+id/Hot_NameTextView"/>-->
     <ImageView
-        android:layout_below="@+id/Hot_NameTextView"
         android:layout_width="wrap_content"
         android:src="@mipmap/ic_launcher"
         android:layout_height="wrap_content"
         android:id="@+id/Hot_MapImageView"/>
-    <!--<com.a.quarter.model.media.IjkVideoView-->
-        <!--android:layout_width="150dp"-->
-        <!--android:layout_height="150dp"-->
-        <!--android:id="@+id/Video_ijkPlay"></com.a.quarter.model.media.IjkVideoView>-->
-
 </RelativeLayout>
 
 

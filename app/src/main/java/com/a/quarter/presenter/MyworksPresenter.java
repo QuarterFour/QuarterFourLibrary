@@ -1,6 +1,9 @@
 package com.a.quarter.presenter;
 
+import com.a.quarter.model.base.BaseObserver;
 import com.a.quarter.model.base.BasePresenter;
+import com.a.quarter.model.bean.MyworksBean;
+import com.a.quarter.model.utils.Httputils;
 import com.a.quarter.view.iview.MyworksView;
 
 /**
@@ -14,5 +17,7 @@ import com.a.quarter.view.iview.MyworksView;
  */
 
 public class MyworksPresenter extends BasePresenter<MyworksView> {
+
+
 
 }

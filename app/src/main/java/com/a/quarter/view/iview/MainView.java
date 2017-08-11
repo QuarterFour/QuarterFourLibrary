@@ -2,6 +2,7 @@ package com.a.quarter.view.iview;
 
 import com.a.quarter.model.base.BaseView;
 import com.a.quarter.model.bean.LoginBean;
+import com.a.quarter.model.bean.SiginBean;
 
 /**
  * 作者：李亚雷
@@ -12,7 +13,7 @@ import com.a.quarter.model.bean.LoginBean;
 
 public interface MainView  extends BaseView{
 
-    void CallBack(LoginBean loginBean);
+    void CallBack(SiginBean siginBeann);
 
 
 }

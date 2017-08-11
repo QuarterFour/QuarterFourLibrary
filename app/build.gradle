@@ -8,7 +8,7 @@ android {
         multiDexEnabled true
         applicationId "com.a.quarter"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -21,17 +21,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']  /**在libs文件夹下找so文件*/
-        }
-    }
-    repositories {
-        mavenCentral()
-        flatDir {
-            dirs 'libs' /**在libs文件夹下找aar文件*/
-        }
-    }
+
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -39,17 +29,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //gson解析
-
     //retrofit + rxjava
-
     //图片加载框架
-
     //recycleview
-
     //炫酷提示框
-
     //图片圆化
-
     //tablayout
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
@@ -66,27 +50,13 @@ dependencies {
     compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     testCompile 'junit:junit:4.12'
-    //    # required, enough for most devices.
-    compile 'tv.danmaku.ijk.media:ijkplayer-java:0.6.1'
-    compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.6.1'
     testCompile 'junit:junit:4.12'
     compile 'com.youth.banner:banner:1.4.9'
     //最新版本
+
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.jwenfeng.pulltorefresh:library:1.2.5'
-    compile files('libs/libapshare.jar')
-    compile files('libs/open_sdk_r5788_lite.jar')
-    compile files('libs/SocialSDK_alipay.jar')
-    compile files('libs/SocialSDK_facebook.jar')
-    compile files('libs/SocialSDK_QQ_Full.jar')
-    compile files('libs/SocialSDK_Sina_Full.jar')
-    compile files('libs/SocialSDK_sms.jar')
-    compile files('libs/SocialSDK_tencentWB.jar')
-    compile files('libs/SocialSDK_WeiXin_Full.jar')
-    compile files('libs/umeng_social_api.jar')
-    compile files('libs/umeng_social_net.jar')
-    compile files('libs/umeng_social_shareview.jar')
-    compile files('libs/umeng_social_tool.jar')
-    compile files('libs/wechat-sdk-android-with-mta-1.1.6.jar')
-    compile files('libs/weiboSDKCore.jar')
+    // 图片加载框架
+    compile 'com.facebook.fresco:fresco:1.4.0'
+    compile project(':playerview')
 }
