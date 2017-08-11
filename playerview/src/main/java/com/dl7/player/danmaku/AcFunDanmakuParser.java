@@ -26,7 +26,7 @@ public class AcFunDanmakuParser extends BaseDanmakuParser {
         }
         return new Danmakus();
     }
-   
+
     /**
      * @param danmakuListData 弹幕数据
      *                        传入的数组内包含普通弹幕，会员弹幕，锁定弹幕。
