@@ -111,6 +111,7 @@ public class RecommendFragment_HotFragment extends Fragment implements Recommend
         List<HotBean.ResourceBean> resource = hotBean.getResource();
         adpter.setData(resource);
         adpter.notifyDataSetChanged();
+
         //Toast.makeText(context(), "hotttt" + resource, Toast.LENGTH_SHORT).show();
     }
 }

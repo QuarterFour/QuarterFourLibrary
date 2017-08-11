@@ -6,6 +6,9 @@ import android.content.Context;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
+
 import java.util.ArrayList;
 
 /**
@@ -23,6 +26,13 @@ public class MyAppliction extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        UMShareAPI.get(this);
+
+        //微信和QQ分享
+        //PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+        PlatformConfig.setQQZone("1106163122", "aYFBhRfnHWXAkrPT");
+
 
         activities = new ArrayList<>();
         mContext=this;

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.a.quarter.R;
 import com.a.quarter.model.bean.HotBean;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +43,10 @@ public class Hotfragmen_RecycalerviewAdapter extends RecyclerView.Adapter<Hotfra
 
     @Override
     public void onBindViewHolder(Myholder holder, int position) {
-//        holder.name.setText(list.get(position).getName());
-//        holder.title.setText(list.get(position).getContent());
-//        holder.data.setText(list.get(position).getUptime());
-        // TODO: 2017/8/1
+    holder.name.setText(list.get(position).getUser().getUserName());
+     //  holder.title.setText(list.get(position).getContent());
+       holder.data.setText(list.get(position).getUptime());
+        Glide.with(contexts).load(list.get(position).getUser().getUserHead()).into(holder.im);
     }
 
     @Override
