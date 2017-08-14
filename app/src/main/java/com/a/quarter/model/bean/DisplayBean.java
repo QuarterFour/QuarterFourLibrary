@@ -261,6 +261,17 @@ public class DisplayBean {
             this.commentList = commentList;
         }
 
+
+        private  boolean isDianZan=false;
+
+        public void setIsDianzan(boolean b) {
+            this.isDianZan=true;
+        }
+
+        public boolean isDianZan() {
+            return isDianZan;
+        }
+
         public static class UserBean {
             /**
              * userHead : http://169.254.1.100/ic_ss.jpg

@@ -6,6 +6,9 @@ import com.a.quarter.model.bean.HotBean;
 import com.a.quarter.model.bean.HotVideoBean;
 import com.a.quarter.model.bean.LoginBean;
 import com.a.quarter.model.bean.MyworksActivity_LocaBean;
+import com.a.quarter.model.bean.SatinCommentBean;
+import com.a.quarter.model.bean.SatinPraiseBean;
+import com.a.quarter.model.bean.SatinStepBean;
 import com.a.quarter.model.bean.SiginBean;
 import com.a.quarter.model.bean.User_PublishBean;
 
@@ -66,6 +69,7 @@ public interface Api {
     @GET("quarter/user/selectUserAll")
     Observable<MyworksActivity_LocaBean> Mywarks(@Query("id") int id);
 
+//##############################################################################################################
     //段子显示页面的接口
     @GET("quarter/user/selectpiccha")
     Observable<DisplayBean> getData();
@@ -78,6 +82,33 @@ public interface Api {
                                          @Field("dictionaryValue") int dictionaryValue,
                                          @Field("userId") int userId,
                                          @Field("content") String content);
+
+    //http://192.168.1.100/quarter/character/AddNice?nicekey=55785s85f5af5357706f48f1ss2011sanice
+    //段子点赞数
+    @GET("quarter/character/AddNice")
+    Observable<SatinPraiseBean> getSatinPraise_num(@Query("nicekey") String nicekey);
+
+
+
+    /**
+     * 接口好像不能用
+     */
+//    //段子转发数
+//    @GET("quarter/user/selectpiccha")
+//    Observable<SatinPraiseBean> getNice_num(@Query("nicekey") String nicekey);
+
+
+
+    //段子评论数 (commentDictionaryValue)是固定的，是1
+    @GET("quarter/user/selectpiccha")
+    Observable<SatinCommentBean> getSatinComment(@Query("commentCharacterPictureMediaId") int commentCharacterPictureMediaId,
+                                                 @Query("commentDictionaryValue") int commentDictionaryValue);
+
+
+    //段子踩数
+    @GET("quarter/user/selectpiccha")
+    Observable<SatinStepBean> getStep_num(@Query("badkey") String badkey);
+
 
 
 

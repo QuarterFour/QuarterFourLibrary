@@ -15,8 +15,17 @@ import android.widget.Toast;
 
 import com.a.quarter.R;
 import com.a.quarter.model.bean.DisplayBean;
+import com.a.quarter.model.bean.SatinCommentBean;
+import com.a.quarter.model.bean.SatinPraiseBean;
+import com.a.quarter.model.bean.SatinStepBean;
+import com.a.quarter.presenter.SatinCommentPresenter;
+import com.a.quarter.presenter.SatinPraisePresenter;
 import com.a.quarter.presenter.SatinPresenter;
+import com.a.quarter.presenter.SatinStepPresenter;
 import com.a.quarter.view.adapter.MySatinRecycleAdapter;
+import com.a.quarter.view.iview.SatinCommentView;
+import com.a.quarter.view.iview.SatinPraiseView;
+import com.a.quarter.view.iview.SatinStepView;
 import com.a.quarter.view.iview.SatinView;
 
 import java.util.List;
@@ -28,9 +37,12 @@ import java.util.List;
  * 作者： 宋莫凡
  * <p>
  * 思路：段子里面的作者头像还没有弄好；还有内容还没有显示图片；上拉加载，
+ *
+ * 实现多个接口，分别是：显示段子；评论、踩、点赞、转发接口
+ *
  */
 
-public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, SatinView {
+public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, SatinView, SatinCommentView,SatinPraiseView,SatinStepView {
 
     private MySatinRecycleAdapter satinRecycleAdapter;
     private SwipeRefreshLayout swip;
@@ -40,6 +52,9 @@ public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRe
     private TextView satin_tab;
     private SatinPresenter satinPresenter;
     private boolean isrefrsh = false;
+    private SatinStepPresenter satinStepPresenter;
+    private SatinCommentPresenter satinCommentPresenter;
+    private SatinPraisePresenter satinPraisePresenter;
 
     @Nullable
     @Override
@@ -68,9 +83,39 @@ public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
     private void initData() {
 
+        //显示段子的presenter
         satinPresenter = new SatinPresenter();
         satinPresenter.setBaseview(this);
         satinPresenter.getDisplayData();
+
+        //段子“踩”数
+        satinStepPresenter = new SatinStepPresenter();
+        satinStepPresenter.setBaseview(this);
+
+        SatinStepBean satinStepBean = new SatinStepBean();
+        String character_bad_num = satinStepBean.getCharacter_bad_num();
+
+        satinStepPresenter.getSatinStepData(character_bad_num);
+
+//        //段子“评论”数
+//        satinCommentPresenter = new SatinCommentPresenter();
+//        satinCommentPresenter.setBaseview(this);
+//        satinCommentPresenter.getSatinCommentData();
+
+        //段子“点赞”数
+        satinPraisePresenter = new SatinPraisePresenter();
+        satinPraisePresenter.setBaseview(this);
+
+        SatinPraiseBean satinPraiseBean = new SatinPraiseBean();
+        String nice_num = satinPraiseBean.getNice_num();
+
+        satinPraisePresenter.getSatinPraiseBean(nice_num);
+
+
+        //段子 “转发” 数  还没有写，因为bean类没有弄好
+//        SatinCommentPresenter satinCommentPresenter = new SatinCommentPresenter();
+//        satinCommentPresenter.setBaseview(this);
+//        satinCommentPresenter.getSatinCommentData();
 
 
         //上拉加载更多
@@ -116,6 +161,9 @@ public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRe
         return getActivity();
     }
 
+    /**
+     * 回调显示段子的接口
+     */
     @Override
     public void getDisplaySatin(DisplayBean displayBean) {
 
@@ -130,6 +178,45 @@ public class EpisodeFragment extends Fragment implements SwipeRefreshLayout.OnRe
             Toast.makeText(getActivity(), "刷新成功..."+size, Toast.LENGTH_SHORT).show();
             isrefrsh=false;
         }
+
+    }
+
+
+    /**
+     * 回调段子  踩  数的
+     */
+    @Override
+    public void getCallBackSatinStep(SatinStepBean satinStepBean) {
+
+        String character_bad_num = satinStepBean.getCharacter_bad_num();
+//        satinRecycleAdapter.set
+
+    }
+
+
+    /**
+     * 回调段子  赞  数的
+     */
+    @Override
+    public void getCallBackSatinPraise(SatinPraiseBean satinPraiseBean) {
+
+        String nice_num = satinPraiseBean.getNice_num();
+
+
+
+        satinRecycleAdapter.notifyDataSetChanged();
+
+
+
+
+    }
+
+
+    /**
+     * 回调段子  评论  数的
+     */
+    @Override
+    public void getCallBackSatinComment(SatinCommentBean satinCommentBean) {
 
     }
 }

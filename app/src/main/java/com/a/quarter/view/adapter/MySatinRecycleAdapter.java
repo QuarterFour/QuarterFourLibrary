@@ -2,7 +2,11 @@ package com.a.quarter.view.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
@@ -14,7 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a.quarter.R;
+import com.a.quarter.model.base.BaseObserver;
 import com.a.quarter.model.bean.DisplayBean;
+import com.a.quarter.model.bean.SatinPraiseBean;
+import com.a.quarter.model.utils.Httputils;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -33,6 +40,23 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
     private ArrayList<DisplayBean.ResourceBean> list = new ArrayList();
 
 
+    //handler传值点赞
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            Bundle data = msg.getData();
+            int position = data.getInt("position");
+            int nicenum1 = data.getInt("nicenum");
+            list.get(position).setNiceNum(nicenum1);
+            Log.e("handleMessage: ", "dd" + nicenum1);
+
+            notifyDataSetChanged();
+        }
+    };
+    private MyViewHoder myViewHoder;
+
     public MySatinRecycleAdapter(Context context) {
         this.context = context;
 
@@ -48,7 +72,7 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
     public MyViewHoder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View inflate = View.inflate(context, R.layout.frag_satin, null);
-        MyViewHoder myViewHoder = new MyViewHoder(inflate);
+        myViewHoder = new MyViewHoder(inflate);
 
         return myViewHoder;
     }
@@ -64,17 +88,18 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
         //名字
         holder.name_text.setText(list.get(position).getUser().getUserName());
         //时间
-        holder.time_text.setText(list.get(position).getUptime()+"");
+        holder.time_text.setText(list.get(position).getUptime() + "");
         //评论
-        holder.commentnum.setText(list.get(position).getCommentNum()+"");
+        holder.commentnum.setText(list.get(position).getCommentNum() + "");
         //转发
-        holder.forwardnum.setText(list.get(position).getForwardNum()+"");
+        holder.forwardnum.setText(list.get(position).getForwardNum() + "");
         //点赞
-        holder.praisenum.setText(list.get(position).getNiceNum()+"");
+        holder.praisenum.setText(list.get(position).getNiceNum() + "");
         //内容
-        holder.content_text.setText(list.get(position).getContent()+"");
+        holder.content_text.setText(list.get(position).getContent() + "");
         //图片_内容
         Glide.with(context).load(list.get(position).getSrc()).into(holder.image_content);
+
 
         //喜欢、转发和收藏的图片
         holder.edit_image.setOnClickListener(new View.OnClickListener() {
@@ -84,18 +109,18 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
                 //得到喜欢、转发和收藏的状态，判断是隐藏还是显示
                 boolean isshow = list.get(position).isshow();
 
-                if ( ! isshow) {
+                if (!isshow) {
                     showShare(holder);
                 } else {
                     disimisShare(holder);
                 }
 
 
-                if (isshow){
+                if (isshow) {
 
                     list.get(position).setIsshow(false);
 
-                }else {
+                } else {
                     list.get(position).setIsshow(true);
                 }
 
@@ -103,7 +128,7 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
             }
         });
 
-        showShareText(holder,list.get(position).isshow());
+        showShareText(holder, list.get(position).isshow());
 
 
         //数量
@@ -132,34 +157,60 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
         holder.praisenum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Drawable drawable1 = context.getResources().getDrawable(R.drawable.praise_ok);
-                drawable1.setBounds(0,0,drawable1.getMinimumWidth(),drawable1.getMinimumHeight());
+                drawable1.setBounds(0, 0, drawable1.getMinimumWidth(), drawable1.getMinimumHeight());
+                holder.praisenum.setCompoundDrawables(null, drawable1, null, null);
 
-                holder.praisenum.setCompoundDrawables(null,drawable1,null,null);
+
+                if (list.get(position).isDianZan()) {
+
+                    //yidianzan
+                    Toast.makeText(context, "已经点过赞了哦", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    Httputils.retrofitUtils(Httputils.getApi().getSatinPraise_num(list.get(position).getNiceKey()), new BaseObserver<SatinPraiseBean>(context) {
+
+                        public int nice_num;
+
+                        @Override
+                        public void success(SatinPraiseBean satinPraiseBean) {
+
+
+                            nice_num = Integer.parseInt(satinPraiseBean.getNice_num());
+                            Log.e("handleMessage: ", "www" + nice_num);
+                            Message message = new Message();
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("nicenum", nice_num);
+                            bundle.putInt("position", position);
+                            message.setData(bundle);
+                            handler.sendMessage(message);
+                            list.get(position).setIsDianzan(true);
+                        }
+
+                    });
+                }
+
 
             }
         });
 
 
-
-
     }
 
     //改变集合里面的状态
-    private void showShareText(MyViewHoder holder , boolean isshow) {
+    private void showShareText(MyViewHoder holder, boolean isshow) {
 
 
-        if (isshow){
+        if (isshow) {
             holder.commentnum.setVisibility(View.VISIBLE);
             holder.forwardnum.setVisibility(View.VISIBLE);
             holder.praisenum.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             holder.commentnum.setVisibility(View.INVISIBLE);
             holder.forwardnum.setVisibility(View.INVISIBLE);
             holder.praisenum.setVisibility(View.INVISIBLE);
         }
-
 
 
     }
@@ -173,8 +224,7 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
     //图片动画（消失时）
     private void disimisShare(MyViewHoder holder) {
 
-
-        showShareText(holder,false);
+        showShareText(holder, false);
 
         startMyAnimation(100f, 0.0f, holder.commentnum);
         startMyAnimation(100f, 0.0f, holder.forwardnum);
@@ -184,7 +234,7 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
     //图片动画（显示时）
     private void showShare(MyViewHoder holder) {
 
-        showShareText(holder,true);
+        showShareText(holder, true);
         startMyAnimation(0.0f, 1f, holder.commentnum);
         startMyAnimation(0.0f, 1f, holder.forwardnum);
         startMyAnimation(0.0f, 1f, holder.praisenum);
@@ -214,6 +264,7 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
     }
 
 
+    //回调到EpisodeFragment类的方法。
     public void setCallBackDisplaySatin(List<DisplayBean.ResourceBean> resource) {
 
         if (resource != null) {
@@ -222,7 +273,6 @@ public class MySatinRecycleAdapter extends RecyclerView.Adapter<MySatinRecycleAd
         }
         notifyDataSetChanged();
     }
-
 
 
     /**
